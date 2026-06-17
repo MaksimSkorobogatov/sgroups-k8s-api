@@ -1,0 +1,20 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: sgroups-system
+
+labels:
+  - pairs:
+      app.kubernetes.io/name: sgroups-k8s-controller
+      app.kubernetes.io/part-of: sgroups
+    includeSelectors: false
+
+resources:
+  - rbac.yaml
+  - aggregation-roles.yaml
+  - manager.yaml
+  - deletion-protection.yaml
+  # Optional. Enable when Prometheus Operator is installed in-cluster:
+  # - servicemonitor.yaml
+  # Optional. Enable for cluster-wide deny-by-default NetworkPolicy:
+  # - networkpolicy.yaml

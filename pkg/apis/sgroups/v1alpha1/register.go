@@ -15,8 +15,16 @@ var SchemeGroupVersion = schema.GroupVersion{Group: GroupName, Version: "v1alpha
 // SchemeBuilder registers our types.
 var SchemeBuilder = runtime.NewSchemeBuilder(addKnownTypes)
 
-// AddToScheme adds all types to the scheme.
+// AddToScheme registers v1alpha1 + internal version.
 var AddToScheme = SchemeBuilder.AddToScheme
+
+// AddToWireScheme registers only the v1alpha1 wire version.
+func AddToWireScheme(scheme *runtime.Scheme) error {
+	scheme.AddKnownTypes(SchemeGroupVersion, KnownTypes()...)
+	metav1.AddToGroupVersion(scheme, SchemeGroupVersion)
+
+	return nil
+}
 
 func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion, KnownTypes()...)
@@ -28,7 +36,19 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 	internalGV := schema.GroupVersion{Group: GroupName, Version: runtime.APIVersionInternal}
 	scheme.AddKnownTypes(internalGV, KnownTypes()...)
 
+	scheme.AddKnownTypes(SchemeGroupVersion, subresourceKnownTypes()...)
+	scheme.AddKnownTypes(internalGV, subresourceKnownTypes()...)
+
 	return nil
+}
+
+// subresourceKnownTypes returns runtime objects returned by subresource
+// storages.
+func subresourceKnownTypes() []runtime.Object {
+	return []runtime.Object{
+		&SocketStatList{},
+		&NftList{},
+	}
 }
 
 // Resource returns a GroupResource for the given resource.

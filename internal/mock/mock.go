@@ -14,6 +14,7 @@ import (
 	"sgroups.io/sgroups-k8s-api/internal/backend"
 	"sgroups.io/sgroups-k8s-api/pkg/apis/sgroups/v1alpha1"
 
+	agentv1 "github.com/PRO-Robotech/sgroups-proto/pkg/api/agent/v1"
 	commonpb "github.com/PRO-Robotech/sgroups-proto/pkg/api/common"
 	sgroupsv1 "github.com/PRO-Robotech/sgroups-proto/pkg/api/sgroups/v1"
 )
@@ -551,6 +552,218 @@ func (m *MockBackend) WatchHosts(ctx context.Context, req *sgroupsv1.HostReq_Wat
 		C:     ch,
 		Close: cancel,
 	}, nil
+}
+
+// ListSocketStatistics returns fabricated stats per selected host so the
+// subresource has something to surface end-to-end.
+func (m *MockBackend) ListSocketStatistics(ctx context.Context, req *sgroupsv1.HostReq_SocketStatistics_List) (*sgroupsv1.HostResp_SocketStatistics_List, error) {
+	if req == nil || len(req.Selectors) == 0 {
+		return nil, errors.New("selectors are required")
+	}
+
+	return &sgroupsv1.HostResp_SocketStatistics_List{
+		Hosts: m.fabricatedSocketStatsHosts(req.GetSelectors()),
+	}, nil
+}
+
+// WatchSocketStatistics emits one snapshot and then idles — enough to
+// exercise the streaming path in tests.
+func (m *MockBackend) WatchSocketStatistics(ctx context.Context, req *sgroupsv1.HostReq_SocketStatistics_Watch) (backend.WatchStream[*sgroupsv1.HostResp_SocketStatistics_Watch], error) {
+	if req == nil || len(req.Selectors) == 0 {
+		return backend.WatchStream[*sgroupsv1.HostResp_SocketStatistics_Watch]{}, errors.New("selectors are required")
+	}
+
+	ch := make(chan *sgroupsv1.HostResp_SocketStatistics_Watch, 1)
+	ch <- &sgroupsv1.HostResp_SocketStatistics_Watch{
+		Hosts: m.fabricatedSocketStatsHosts(req.GetSelectors()),
+	}
+
+	return backend.WatchStream[*sgroupsv1.HostResp_SocketStatistics_Watch]{
+		C:     ch,
+		Close: func() { close(ch) },
+	}, nil
+}
+
+// ListNft returns a fabricated ruleset per selected host so the subresource
+// has something to surface end-to-end.
+func (m *MockBackend) ListNft(ctx context.Context, req *sgroupsv1.HostReq_Nft_List) (*sgroupsv1.HostResp_Nft_List, error) {
+	if req == nil || len(req.Selectors) == 0 {
+		return nil, errors.New("selectors are required")
+	}
+
+	return &sgroupsv1.HostResp_Nft_List{
+		Hosts: m.fabricatedNftHosts(req.GetSelectors()),
+	}, nil
+}
+
+// WatchNft emits one snapshot and then idles — enough to exercise the
+// streaming path in tests.
+func (m *MockBackend) WatchNft(ctx context.Context, req *sgroupsv1.HostReq_Nft_Watch) (backend.WatchStream[*sgroupsv1.HostResp_Nft_Watch], error) {
+	if req == nil || len(req.Selectors) == 0 {
+		return backend.WatchStream[*sgroupsv1.HostResp_Nft_Watch]{}, errors.New("selectors are required")
+	}
+
+	ch := make(chan *sgroupsv1.HostResp_Nft_Watch, 1)
+	ch <- &sgroupsv1.HostResp_Nft_Watch{
+		Hosts: m.fabricatedNftHosts(req.GetSelectors()),
+	}
+
+	return backend.WatchStream[*sgroupsv1.HostResp_Nft_Watch]{
+		C:     ch,
+		Close: func() { close(ch) },
+	}, nil
+}
+
+// fabricatedNftHosts builds a Host-wrapped ruleset per selector. Selectors
+// pointing at unknown hosts are silently dropped (matching how the real
+// backend handles fan-out to an unreachable agent).
+func (m *MockBackend) fabricatedNftHosts(selectors []*sgroupsv1.HostReq_Nft_FieldSelector) []*sgroupsv1.HostResp_Nft_Host {
+	out := make([]*sgroupsv1.HostResp_Nft_Host, 0, len(selectors))
+	for _, sel := range selectors {
+		if sel == nil {
+			continue
+		}
+		if !m.hostExists(sel.GetName(), sel.GetNamespace()) {
+			continue
+		}
+		out = append(out, &sgroupsv1.HostResp_Nft_Host{
+			Name:      sel.GetName(),
+			Namespace: sel.GetNamespace(),
+			Nft:       fabricateNftables(),
+		})
+	}
+
+	return out
+}
+
+// fabricateNftables returns a deterministic single-ruleset dataset in both
+// text and json form, so the subresource exercises the structured-JSON path.
+func fabricateNftables() []*agentv1.Nftables {
+	return []*agentv1.Nftables{
+		{
+			Text: "table inet filter {\n\tchain input {\n\t\ttype filter hook input priority 0; policy drop;\n\t}\n}\n",
+			Json: `{"nftables":[{"table":{"family":"inet","name":"filter","handle":1}}]}`,
+		},
+	}
+}
+
+// fabricatedSocketStatsHosts builds a Host-wrapped response per selector.
+// Selectors pointing at unknown hosts are silently dropped (matching how the
+// real backend handles fan-out to an unreachable agent).
+func (m *MockBackend) fabricatedSocketStatsHosts(selectors []*sgroupsv1.HostReq_SocketStatistics_FieldSelector) []*sgroupsv1.HostResp_SocketStatistics_Host {
+	out := make([]*sgroupsv1.HostResp_SocketStatistics_Host, 0, len(selectors))
+	for _, sel := range selectors {
+		if sel == nil {
+			continue
+		}
+		if !m.hostExists(sel.GetName(), sel.GetNamespace()) {
+			continue
+		}
+		out = append(out, &sgroupsv1.HostResp_SocketStatistics_Host{
+			Name:      sel.GetName(),
+			Namespace: sel.GetNamespace(),
+			Stats:     fabricateSockStats(sel.GetFilters()),
+		})
+	}
+
+	return out
+}
+
+// hostExists checks whether a host (name@namespace) is in storage.
+func (m *MockBackend) hostExists(name, namespace string) bool {
+	m.mu.RLock()
+	defer m.mu.RUnlock()
+	for _, h := range m.hosts {
+		md := h.GetMetadata()
+		if md.GetName() == name && md.GetNamespace() == namespace {
+			return true
+		}
+	}
+
+	return false
+}
+
+// fabricateSockStats returns a deterministic dataset; filters, if any, drop
+// non-matching entries (mock-grade: Protocol / State / Port only).
+func fabricateSockStats(filters []*agentv1.SockStat_Selectors) []*agentv1.SockStat {
+	all := []*agentv1.SockStat{
+		{
+			Protocol:  "tcp",
+			Family:    commonpb.IpAddrFamily_IPV4,
+			State:     agentv1.ConnState_LISTEN,
+			LocalAddr: "0.0.0.0",
+			LocalPort: 22,
+			Inode:     1,
+			Processes: []*agentv1.ProcessInfo{{Pid: 100, Comm: "sshd", Exe: "/usr/sbin/sshd", Fd: 3}},
+		},
+		{
+			Protocol:  "tcp",
+			Family:    commonpb.IpAddrFamily_IPV4,
+			State:     agentv1.ConnState_LISTEN,
+			LocalAddr: "0.0.0.0",
+			LocalPort: 80,
+			Inode:     2,
+			Processes: []*agentv1.ProcessInfo{{Pid: 200, Comm: "nginx", Exe: "/usr/sbin/nginx", Fd: 6}},
+		},
+		{
+			Protocol:  "tcp",
+			Family:    commonpb.IpAddrFamily_IPV4,
+			State:     agentv1.ConnState_LISTEN,
+			LocalAddr: "0.0.0.0",
+			LocalPort: 443,
+			Inode:     3,
+			Processes: []*agentv1.ProcessInfo{{Pid: 200, Comm: "nginx", Exe: "/usr/sbin/nginx", Fd: 7}},
+		},
+		{
+			Protocol:   "tcp",
+			Family:     commonpb.IpAddrFamily_IPV4,
+			State:      agentv1.ConnState_ESTABLISHED,
+			LocalAddr:  "10.0.0.1",
+			LocalPort:  443,
+			RemoteAddr: "10.0.0.42",
+			RemotePort: 51234,
+			Inode:      4,
+			Processes:  []*agentv1.ProcessInfo{{Pid: 200, Comm: "nginx", Exe: "/usr/sbin/nginx", Fd: 12}},
+		},
+	}
+
+	if len(filters) == 0 {
+		return all
+	}
+	out := make([]*agentv1.SockStat, 0, len(all))
+	for _, s := range all {
+		if matchSockStat(s, filters) {
+			out = append(out, s)
+		}
+	}
+
+	return out
+}
+
+// matchSockStat returns true if any filter matches. A field on the filter is
+// honored only when set; multiple set fields are AND-joined within one filter.
+func matchSockStat(s *agentv1.SockStat, filters []*agentv1.SockStat_Selectors) bool {
+	for _, f := range filters {
+		if f == nil {
+			continue
+		}
+		if f.Protocol != "" && f.Protocol != s.Protocol {
+			continue
+		}
+		if f.State != agentv1.ConnState_CONN_UNDEF && f.State != s.State {
+			continue
+		}
+		if f.LocalPort != nil && *f.LocalPort != s.LocalPort {
+			continue
+		}
+		if f.RemotePort != nil && *f.RemotePort != s.RemotePort {
+			continue
+		}
+
+		return true
+	}
+
+	return false
 }
 
 func (m *MockBackend) UpsertHostBindings(ctx context.Context, req *sgroupsv1.HostBindingReq_Upsert) (*sgroupsv1.HostBindingResp_Upsert, error) {

@@ -60,3 +60,22 @@ func (e EndpointType) Validate() error {
 			EndpointTypeAddressGroup, EndpointTypeService, EndpointTypeFQDN, EndpointTypeCIDR, e)
 	}
 }
+
+// Validate returns an error if s is not one of the well-known ConnState constants.
+// Empty / "Unknown" are treated as unset (accepted — caller decides if required).
+func (s ConnState) Validate() error {
+	switch s {
+	case "", ConnStateUnknown,
+		ConnStateEstablished, ConnStateSynSent, ConnStateSynRecv,
+		ConnStateFinWait1, ConnStateFinWait2, ConnStateTimeWait,
+		ConnStateClose, ConnStateCloseWait, ConnStateLastAck,
+		ConnStateListen, ConnStateClosing, ConnStateNewSynRecv:
+		return nil
+	default:
+		return fmt.Errorf("must be one of [%q, %q, %q, %q, %q, %q, %q, %q, %q, %q, %q, %q] (case-sensitive), got %q",
+			ConnStateEstablished, ConnStateSynSent, ConnStateSynRecv,
+			ConnStateFinWait1, ConnStateFinWait2, ConnStateTimeWait,
+			ConnStateClose, ConnStateCloseWait, ConnStateLastAck,
+			ConnStateListen, ConnStateClosing, ConnStateNewSynRecv, s)
+	}
+}

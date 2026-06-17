@@ -39,8 +39,9 @@ func HostFromProto(in *sgroupsv1.Host) *v1alpha1.Host {
 			Comment:     in.GetSpec().GetComment(),
 			Description: in.GetSpec().GetDescription(),
 		},
-		IPs:      hostIPsFromProto(in.GetSpec().GetIps()),
-		MetaInfo: hostMetaInfoFromProto(in.GetSpec().GetMetaInfo()),
+		IPs:       hostIPsFromProto(in.GetSpec().GetIps()),
+		MetaInfo:  hostMetaInfoFromProto(in.GetSpec().GetMetaInfo()),
+		Endpoints: hostEndpointsFromProto(in.GetSpec().GetEndpoints()),
 	}
 	objectMetaFromProto(&out.ObjectMeta, in.GetMetadata())
 
@@ -62,9 +63,10 @@ func HostFromProtoExt(in *sgroupsv1.HostResp_HostExt) *v1alpha1.Host {
 			Comment:     in.GetSpec().GetComment(),
 			Description: in.GetSpec().GetDescription(),
 		},
-		Refs:     ResourceRefsFromProto(in.GetRefs()),
-		IPs:      hostIPsFromProto(in.GetSpec().GetIps()),
-		MetaInfo: hostMetaInfoFromProto(in.GetSpec().GetMetaInfo()),
+		Refs:      ResourceRefsFromProto(in.GetRefs()),
+		IPs:       hostIPsFromProto(in.GetSpec().GetIps()),
+		MetaInfo:  hostMetaInfoFromProto(in.GetSpec().GetMetaInfo()),
+		Endpoints: hostEndpointsFromProto(in.GetSpec().GetEndpoints()),
 	}
 	objectMetaFromProto(&out.ObjectMeta, in.GetMetadata())
 
@@ -95,4 +97,27 @@ func hostMetaInfoFromProto(in *sgroupsv1.Host_Spec_MetaInfo) v1alpha1.HostMetaIn
 		PlatformVersion: in.GetPlatformVersion(),
 		KernelVersion:   in.GetKernelVersion(),
 	}
+}
+
+func hostEndpointsFromProto(in *sgroupsv1.Host_Spec_Endpoints) v1alpha1.HostEndpoints {
+	if in == nil {
+		return v1alpha1.HostEndpoints{}
+	}
+
+	ports := in.GetPorts()
+	out := v1alpha1.HostEndpoints{Address: in.GetAddress()}
+	if len(ports) > 0 {
+		out.Ports = make([]v1alpha1.HostEndpointPort, 0, len(ports))
+		for _, p := range ports {
+			if p == nil {
+				continue
+			}
+			out.Ports = append(out.Ports, v1alpha1.HostEndpointPort{
+				Name: p.GetName(),
+				Port: p.GetPort(),
+			})
+		}
+	}
+
+	return out
 }

@@ -46,6 +46,7 @@ func (c CompletedConfig) New() (*Server, error) {
 	)
 
 	apiGroupInfo.VersionedResourcesStorageMap = buildStorageMap(c.ExtraConfig.GRPCClient, c.ExtraConfig.StorageOptions)
+	installSubresources(apiGroupInfo.VersionedResourcesStorageMap, c.ExtraConfig.GRPCClient, c.ExtraConfig.StorageOptions)
 
 	if err := genericServer.InstallAPIGroup(&apiGroupInfo); err != nil {
 		return nil, err

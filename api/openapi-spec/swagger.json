@@ -14,10 +14,12 @@
       "get": {
         "description": "List AddressGroup resources across all namespaces.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_addressgroup"
@@ -66,7 +68,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.AddressGroupList"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.AddressGroupList"
             }
           }
         }
@@ -76,10 +78,12 @@
       "get": {
         "description": "List HostBinding resources across all namespaces.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_hostbinding"
@@ -128,7 +132,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.HostBindingList"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.HostBindingList"
             }
           }
         }
@@ -138,10 +142,12 @@
       "get": {
         "description": "List Host resources across all namespaces.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_host"
@@ -190,7 +196,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.HostList"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.HostList"
             }
           }
         }
@@ -200,10 +206,12 @@
       "get": {
         "description": "List AddressGroup resources in the specified namespace.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_addressgroup"
@@ -252,7 +260,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.AddressGroupList"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.AddressGroupList"
             }
           }
         }
@@ -260,10 +268,12 @@
       "post": {
         "description": "Create a new AddressGroup in the specified namespace.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_addressgroup"
@@ -277,7 +287,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1alpha1.AddressGroup"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.AddressGroup"
             }
           }
         ],
@@ -285,7 +295,7 @@
           "201": {
             "description": "Created",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.AddressGroup"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.AddressGroup"
             }
           }
         }
@@ -304,10 +314,12 @@
       "get": {
         "description": "Read the specified AddressGroup.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_addressgroup"
@@ -318,7 +330,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.AddressGroup"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.AddressGroup"
             }
           }
         }
@@ -326,10 +338,12 @@
       "put": {
         "description": "Replace the specified AddressGroup.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_addressgroup"
@@ -343,7 +357,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1alpha1.AddressGroup"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.AddressGroup"
             }
           }
         ],
@@ -351,7 +365,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.AddressGroup"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.AddressGroup"
             }
           }
         }
@@ -359,10 +373,12 @@
       "delete": {
         "description": "Delete the specified AddressGroup.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_addressgroup"
@@ -373,7 +389,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1.Status"
+              "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Status"
             }
           }
         }
@@ -381,10 +397,13 @@
       "patch": {
         "description": "Partially update the specified AddressGroup.",
         "consumes": [
-          "application/json"
+          "application/strategic-merge-patch+json",
+          "application/merge-patch+json",
+          "application/json-patch+json"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_addressgroup"
@@ -398,7 +417,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1alpha1.AddressGroup"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.AddressGroup"
             }
           }
         ],
@@ -406,7 +425,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.AddressGroup"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.AddressGroup"
             }
           }
         }
@@ -432,10 +451,12 @@
       "get": {
         "description": "List HostBinding resources in the specified namespace.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_hostbinding"
@@ -484,7 +505,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.HostBindingList"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.HostBindingList"
             }
           }
         }
@@ -492,10 +513,12 @@
       "post": {
         "description": "Create a new HostBinding in the specified namespace.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_hostbinding"
@@ -509,7 +532,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1alpha1.HostBinding"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.HostBinding"
             }
           }
         ],
@@ -517,7 +540,7 @@
           "201": {
             "description": "Created",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.HostBinding"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.HostBinding"
             }
           }
         }
@@ -536,10 +559,12 @@
       "get": {
         "description": "Read the specified HostBinding.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_hostbinding"
@@ -550,7 +575,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.HostBinding"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.HostBinding"
             }
           }
         }
@@ -558,10 +583,12 @@
       "put": {
         "description": "Replace the specified HostBinding.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_hostbinding"
@@ -575,7 +602,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1alpha1.HostBinding"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.HostBinding"
             }
           }
         ],
@@ -583,7 +610,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.HostBinding"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.HostBinding"
             }
           }
         }
@@ -591,10 +618,12 @@
       "delete": {
         "description": "Delete the specified HostBinding.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_hostbinding"
@@ -605,7 +634,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1.Status"
+              "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Status"
             }
           }
         }
@@ -613,10 +642,13 @@
       "patch": {
         "description": "Partially update the specified HostBinding.",
         "consumes": [
-          "application/json"
+          "application/strategic-merge-patch+json",
+          "application/merge-patch+json",
+          "application/json-patch+json"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_hostbinding"
@@ -630,7 +662,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1alpha1.HostBinding"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.HostBinding"
             }
           }
         ],
@@ -638,7 +670,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.HostBinding"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.HostBinding"
             }
           }
         }
@@ -664,10 +696,12 @@
       "get": {
         "description": "List Host resources in the specified namespace.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_host"
@@ -716,7 +750,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.HostList"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.HostList"
             }
           }
         }
@@ -724,10 +758,12 @@
       "post": {
         "description": "Create a new Host in the specified namespace.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_host"
@@ -741,7 +777,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1alpha1.Host"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Host"
             }
           }
         ],
@@ -749,7 +785,7 @@
           "201": {
             "description": "Created",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.Host"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Host"
             }
           }
         }
@@ -768,10 +804,12 @@
       "get": {
         "description": "Read the specified Host.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_host"
@@ -782,7 +820,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.Host"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Host"
             }
           }
         }
@@ -790,10 +828,12 @@
       "put": {
         "description": "Replace the specified Host.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_host"
@@ -807,7 +847,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1alpha1.Host"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Host"
             }
           }
         ],
@@ -815,7 +855,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.Host"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Host"
             }
           }
         }
@@ -823,10 +863,12 @@
       "delete": {
         "description": "Delete the specified Host.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_host"
@@ -837,7 +879,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1.Status"
+              "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Status"
             }
           }
         }
@@ -845,10 +887,13 @@
       "patch": {
         "description": "Partially update the specified Host.",
         "consumes": [
-          "application/json"
+          "application/strategic-merge-patch+json",
+          "application/merge-patch+json",
+          "application/json-patch+json"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_host"
@@ -862,7 +907,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1alpha1.Host"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Host"
             }
           }
         ],
@@ -870,7 +915,113 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.Host"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Host"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "description": "Namespace of the Host.",
+          "name": "namespace",
+          "in": "path",
+          "required": true
+        },
+        {
+          "type": "string",
+          "description": "Name of the Host.",
+          "name": "name",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/apis/sgroups.io/v1alpha1/namespaces/{namespace}/hosts/{name}/nft": {
+      "get": {
+        "description": "Reads the nftables ruleset aggregated from the host-agent, in both text and structured-JSON form. With ?watch=true the response is a stream.",
+        "consumes": [
+          "application/json",
+          "application/yaml"
+        ],
+        "produces": [
+          "application/json",
+          "application/yaml"
+        ],
+        "tags": [
+          "sgroups_host"
+        ],
+        "summary": "Read the nftables ruleset from a Host",
+        "operationId": "getHostNft",
+        "parameters": [
+          {
+            "type": "boolean",
+            "description": "If true, the response is a stream of newline-delimited NftList objects.",
+            "name": "watch",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.NftList"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "description": "Namespace of the Host.",
+          "name": "namespace",
+          "in": "path",
+          "required": true
+        },
+        {
+          "type": "string",
+          "description": "Name of the Host.",
+          "name": "name",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/apis/sgroups.io/v1alpha1/namespaces/{namespace}/hosts/{name}/sockstats": {
+      "get": {
+        "description": "Reads the socket statistics aggregated from the host-agent. With ?watch=true the response is a stream.",
+        "consumes": [
+          "application/json",
+          "application/yaml"
+        ],
+        "produces": [
+          "application/json",
+          "application/yaml"
+        ],
+        "tags": [
+          "sgroups_host"
+        ],
+        "summary": "Read socket statistics from a Host",
+        "operationId": "getHostSocketStats",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Filter expression as comma-separated key=value pairs. Multiple selector parameters are OR-joined. Keys: protocol, family, state, localAddr, localPort, remoteAddr, remotePort, ifname, inode, pid, comm. Enum values (case-sensitive): state=[Established,SynSent,SynRecv,FinWait1,FinWait2,TimeWait,Close,CloseWait,LastAck,Listen,Closing,NewSynRecv], family=[IPv4,IPv6]. Example: protocol=tcp,state=Listen,localPort=80.",
+            "name": "selector",
+            "in": "query"
+          },
+          {
+            "type": "boolean",
+            "description": "If true, the response is a stream of newline-delimited SocketStatList objects.",
+            "name": "watch",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.SocketStatList"
             }
           }
         }
@@ -896,10 +1047,12 @@
       "get": {
         "description": "List NetworkBinding resources in the specified namespace.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_networkbinding"
@@ -948,7 +1101,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.NetworkBindingList"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.NetworkBindingList"
             }
           }
         }
@@ -956,10 +1109,12 @@
       "post": {
         "description": "Create a new NetworkBinding in the specified namespace.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_networkbinding"
@@ -973,7 +1128,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1alpha1.NetworkBinding"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.NetworkBinding"
             }
           }
         ],
@@ -981,7 +1136,7 @@
           "201": {
             "description": "Created",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.NetworkBinding"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.NetworkBinding"
             }
           }
         }
@@ -1000,10 +1155,12 @@
       "get": {
         "description": "Read the specified NetworkBinding.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_networkbinding"
@@ -1014,7 +1171,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.NetworkBinding"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.NetworkBinding"
             }
           }
         }
@@ -1022,10 +1179,12 @@
       "put": {
         "description": "Replace the specified NetworkBinding.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_networkbinding"
@@ -1039,7 +1198,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1alpha1.NetworkBinding"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.NetworkBinding"
             }
           }
         ],
@@ -1047,7 +1206,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.NetworkBinding"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.NetworkBinding"
             }
           }
         }
@@ -1055,10 +1214,12 @@
       "delete": {
         "description": "Delete the specified NetworkBinding.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_networkbinding"
@@ -1069,7 +1230,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1.Status"
+              "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Status"
             }
           }
         }
@@ -1077,10 +1238,13 @@
       "patch": {
         "description": "Partially update the specified NetworkBinding.",
         "consumes": [
-          "application/json"
+          "application/strategic-merge-patch+json",
+          "application/merge-patch+json",
+          "application/json-patch+json"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_networkbinding"
@@ -1094,7 +1258,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1alpha1.NetworkBinding"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.NetworkBinding"
             }
           }
         ],
@@ -1102,7 +1266,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.NetworkBinding"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.NetworkBinding"
             }
           }
         }
@@ -1128,10 +1292,12 @@
       "get": {
         "description": "List Network resources in the specified namespace.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_network"
@@ -1180,7 +1346,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.NetworkList"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.NetworkList"
             }
           }
         }
@@ -1188,10 +1354,12 @@
       "post": {
         "description": "Create a new Network in the specified namespace.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_network"
@@ -1205,7 +1373,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1alpha1.Network"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Network"
             }
           }
         ],
@@ -1213,7 +1381,7 @@
           "201": {
             "description": "Created",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.Network"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Network"
             }
           }
         }
@@ -1232,10 +1400,12 @@
       "get": {
         "description": "Read the specified Network.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_network"
@@ -1246,7 +1416,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.Network"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Network"
             }
           }
         }
@@ -1254,10 +1424,12 @@
       "put": {
         "description": "Replace the specified Network.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_network"
@@ -1271,7 +1443,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1alpha1.Network"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Network"
             }
           }
         ],
@@ -1279,7 +1451,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.Network"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Network"
             }
           }
         }
@@ -1287,10 +1459,12 @@
       "delete": {
         "description": "Delete the specified Network.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_network"
@@ -1301,7 +1475,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1.Status"
+              "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Status"
             }
           }
         }
@@ -1309,10 +1483,13 @@
       "patch": {
         "description": "Partially update the specified Network.",
         "consumes": [
-          "application/json"
+          "application/strategic-merge-patch+json",
+          "application/merge-patch+json",
+          "application/json-patch+json"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_network"
@@ -1326,7 +1503,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1alpha1.Network"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Network"
             }
           }
         ],
@@ -1334,7 +1511,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.Network"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Network"
             }
           }
         }
@@ -1360,10 +1537,12 @@
       "get": {
         "description": "List Rule resources in the specified namespace.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_rule"
@@ -1412,7 +1591,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.RuleList"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.RuleList"
             }
           }
         }
@@ -1420,10 +1599,12 @@
       "post": {
         "description": "Create a new Rule in the specified namespace.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_rule"
@@ -1437,7 +1618,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1alpha1.Rule"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Rule"
             }
           }
         ],
@@ -1445,7 +1626,7 @@
           "201": {
             "description": "Created",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.Rule"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Rule"
             }
           }
         }
@@ -1464,10 +1645,12 @@
       "get": {
         "description": "Read the specified Rule.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_rule"
@@ -1478,7 +1661,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.Rule"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Rule"
             }
           }
         }
@@ -1486,10 +1669,12 @@
       "put": {
         "description": "Replace the specified Rule.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_rule"
@@ -1503,7 +1688,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1alpha1.Rule"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Rule"
             }
           }
         ],
@@ -1511,7 +1696,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.Rule"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Rule"
             }
           }
         }
@@ -1519,10 +1704,12 @@
       "delete": {
         "description": "Delete the specified Rule.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_rule"
@@ -1533,7 +1720,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1.Status"
+              "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Status"
             }
           }
         }
@@ -1541,10 +1728,13 @@
       "patch": {
         "description": "Partially update the specified Rule.",
         "consumes": [
-          "application/json"
+          "application/strategic-merge-patch+json",
+          "application/merge-patch+json",
+          "application/json-patch+json"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_rule"
@@ -1558,7 +1748,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1alpha1.Rule"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Rule"
             }
           }
         ],
@@ -1566,7 +1756,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.Rule"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Rule"
             }
           }
         }
@@ -1592,10 +1782,12 @@
       "get": {
         "description": "List ServiceBinding resources in the specified namespace.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_servicebinding"
@@ -1644,7 +1836,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.ServiceBindingList"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.ServiceBindingList"
             }
           }
         }
@@ -1652,10 +1844,12 @@
       "post": {
         "description": "Create a new ServiceBinding in the specified namespace.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_servicebinding"
@@ -1669,7 +1863,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1alpha1.ServiceBinding"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.ServiceBinding"
             }
           }
         ],
@@ -1677,7 +1871,7 @@
           "201": {
             "description": "Created",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.ServiceBinding"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.ServiceBinding"
             }
           }
         }
@@ -1696,10 +1890,12 @@
       "get": {
         "description": "Read the specified ServiceBinding.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_servicebinding"
@@ -1710,7 +1906,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.ServiceBinding"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.ServiceBinding"
             }
           }
         }
@@ -1718,10 +1914,12 @@
       "put": {
         "description": "Replace the specified ServiceBinding.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_servicebinding"
@@ -1735,7 +1933,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1alpha1.ServiceBinding"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.ServiceBinding"
             }
           }
         ],
@@ -1743,7 +1941,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.ServiceBinding"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.ServiceBinding"
             }
           }
         }
@@ -1751,10 +1949,12 @@
       "delete": {
         "description": "Delete the specified ServiceBinding.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_servicebinding"
@@ -1765,7 +1965,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1.Status"
+              "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Status"
             }
           }
         }
@@ -1773,10 +1973,13 @@
       "patch": {
         "description": "Partially update the specified ServiceBinding.",
         "consumes": [
-          "application/json"
+          "application/strategic-merge-patch+json",
+          "application/merge-patch+json",
+          "application/json-patch+json"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_servicebinding"
@@ -1790,7 +1993,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1alpha1.ServiceBinding"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.ServiceBinding"
             }
           }
         ],
@@ -1798,7 +2001,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.ServiceBinding"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.ServiceBinding"
             }
           }
         }
@@ -1824,10 +2027,12 @@
       "get": {
         "description": "List Service resources in the specified namespace.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_service"
@@ -1876,7 +2081,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.ServiceList"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.ServiceList"
             }
           }
         }
@@ -1884,10 +2089,12 @@
       "post": {
         "description": "Create a new Service in the specified namespace.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_service"
@@ -1901,7 +2108,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1alpha1.Service"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Service"
             }
           }
         ],
@@ -1909,7 +2116,7 @@
           "201": {
             "description": "Created",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.Service"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Service"
             }
           }
         }
@@ -1928,10 +2135,12 @@
       "get": {
         "description": "Read the specified Service.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_service"
@@ -1942,7 +2151,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.Service"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Service"
             }
           }
         }
@@ -1950,10 +2159,12 @@
       "put": {
         "description": "Replace the specified Service.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_service"
@@ -1967,7 +2178,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1alpha1.Service"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Service"
             }
           }
         ],
@@ -1975,7 +2186,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.Service"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Service"
             }
           }
         }
@@ -1983,10 +2194,12 @@
       "delete": {
         "description": "Delete the specified Service.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_service"
@@ -1997,7 +2210,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1.Status"
+              "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Status"
             }
           }
         }
@@ -2005,10 +2218,13 @@
       "patch": {
         "description": "Partially update the specified Service.",
         "consumes": [
-          "application/json"
+          "application/strategic-merge-patch+json",
+          "application/merge-patch+json",
+          "application/json-patch+json"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_service"
@@ -2022,7 +2238,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1alpha1.Service"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Service"
             }
           }
         ],
@@ -2030,7 +2246,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.Service"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Service"
             }
           }
         }
@@ -2056,10 +2272,12 @@
       "get": {
         "description": "List NetworkBinding resources across all namespaces.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_networkbinding"
@@ -2108,7 +2326,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.NetworkBindingList"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.NetworkBindingList"
             }
           }
         }
@@ -2118,10 +2336,12 @@
       "get": {
         "description": "List Network resources across all namespaces.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_network"
@@ -2170,7 +2390,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.NetworkList"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.NetworkList"
             }
           }
         }
@@ -2180,10 +2400,12 @@
       "get": {
         "description": "List Rule resources across all namespaces.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_rule"
@@ -2232,7 +2454,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.RuleList"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.RuleList"
             }
           }
         }
@@ -2242,10 +2464,12 @@
       "get": {
         "description": "List ServiceBinding resources across all namespaces.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_servicebinding"
@@ -2294,7 +2518,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.ServiceBindingList"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.ServiceBindingList"
             }
           }
         }
@@ -2304,10 +2528,12 @@
       "get": {
         "description": "List Service resources across all namespaces.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_service"
@@ -2356,7 +2582,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.ServiceList"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.ServiceList"
             }
           }
         }
@@ -2366,10 +2592,12 @@
       "get": {
         "description": "List all Tenant resources.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_tenant"
@@ -2418,7 +2646,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.TenantList"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.TenantList"
             }
           }
         }
@@ -2426,10 +2654,12 @@
       "post": {
         "description": "Create a new Tenant resource.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_tenant"
@@ -2443,7 +2673,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1alpha1.Tenant"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Tenant"
             }
           }
         ],
@@ -2451,7 +2681,7 @@
           "201": {
             "description": "Created",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.Tenant"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Tenant"
             }
           }
         }
@@ -2461,10 +2691,12 @@
       "get": {
         "description": "Read the specified Tenant.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_tenant"
@@ -2475,7 +2707,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.Tenant"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Tenant"
             }
           }
         }
@@ -2483,10 +2715,12 @@
       "put": {
         "description": "Replace the specified Tenant.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_tenant"
@@ -2500,7 +2734,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1alpha1.Tenant"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Tenant"
             }
           }
         ],
@@ -2508,7 +2742,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.Tenant"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Tenant"
             }
           }
         }
@@ -2516,10 +2750,12 @@
       "delete": {
         "description": "Delete the specified Tenant.",
         "consumes": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_tenant"
@@ -2530,7 +2766,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1.Status"
+              "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Status"
             }
           }
         }
@@ -2538,10 +2774,13 @@
       "patch": {
         "description": "Partially update the specified Tenant.",
         "consumes": [
-          "application/json"
+          "application/strategic-merge-patch+json",
+          "application/merge-patch+json",
+          "application/json-patch+json"
         ],
         "produces": [
-          "application/json"
+          "application/json",
+          "application/yaml"
         ],
         "tags": [
           "sgroups_tenant"
@@ -2555,7 +2794,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1alpha1.Tenant"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Tenant"
             }
           }
         ],
@@ -2563,7 +2802,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/v1alpha1.Tenant"
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Tenant"
             }
           }
         }
@@ -2779,18 +3018,108 @@
       },
       "x-kubernetes-map-type": "atomic"
     },
+    "io.k8s.apimachinery.pkg.apis.meta.v1.Status": {
+      "description": "Status is a return value for calls that don't return other objects.",
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "code": {
+          "description": "Suggested HTTP return code for this status, 0 if not set.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "details": {
+          "description": "Extended data associated with the reason.  Each reason may define its own extended details. This field is optional and the data returned is not guaranteed to conform to any schema except that defined by the reason type.",
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails"
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "message": {
+          "description": "A human-readable description of the status of this operation.",
+          "type": "string"
+        },
+        "metadata": {
+          "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "default": {},
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
+        },
+        "reason": {
+          "description": "A machine-readable description of why this operation is in the \"Failure\" status. If this value is empty there is no information available. A Reason clarifies an HTTP status code but does not override it.",
+          "type": "string"
+        },
+        "status": {
+          "description": "Status of the operation. One of: \"Success\" or \"Failure\". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
+          "type": "string"
+        }
+      }
+    },
+    "io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause": {
+      "description": "StatusCause provides more information about an api.Status failure, including cases when multiple errors are encountered.",
+      "type": "object",
+      "properties": {
+        "field": {
+          "description": "The field of the resource that has caused this error, as named by its JSON serialization. May include dot and postfix notation for nested attributes. Arrays are zero-indexed.  Fields may appear more than once in an array of causes due to fields having multiple errors. Optional.\n\nExamples:\n  \"name\" - the field \"name\" on the current resource\n  \"items[0].name\" - the field \"name\" on the first array entry in \"items\"",
+          "type": "string"
+        },
+        "message": {
+          "description": "A human-readable description of the cause of the error.  This field may be presented as-is to a reader.",
+          "type": "string"
+        },
+        "reason": {
+          "description": "A machine-readable description of the cause of the error. If this value is empty there is no information available.",
+          "type": "string"
+        }
+      }
+    },
+    "io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails": {
+      "description": "StatusDetails is a set of additional properties that MAY be set by the server to provide additional information about a response. The Reason field of a Status object defines what attributes will be set. Clients must ignore fields that do not match the defined type of each attribute, and should assume that any attribute may be empty, invalid, or under defined.",
+      "type": "object",
+      "properties": {
+        "causes": {
+          "description": "The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes.",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause"
+          },
+          "x-kubernetes-list-type": "atomic"
+        },
+        "group": {
+          "description": "The group attribute of the resource associated with the status StatusReason.",
+          "type": "string"
+        },
+        "kind": {
+          "description": "The kind attribute of the resource associated with the status StatusReason. On some operations may differ from the requested resource Kind. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "name": {
+          "description": "The name attribute of the resource associated with the status StatusReason (when there is a single name which can be described).",
+          "type": "string"
+        },
+        "retryAfterSeconds": {
+          "description": "If specified, the time in seconds before the operation should be retried. Some errors may indicate the client must take an alternate action - for those errors this field may indicate how long to wait before taking the alternate action.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "uid": {
+          "description": "UID of the resource. (when there is a single resource which can be described). More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids",
+          "type": "string"
+        }
+      }
+    },
     "io.k8s.apimachinery.pkg.apis.meta.v1.Time": {
       "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
       "type": "string",
       "format": "date-time"
     },
-    "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Action": {
-      "description": "Action (Allow or Deny)",
-      "type": "string",
-      "enum": [
-        "Allow",
-        "Deny"
-      ]
+    "io.k8s.apimachinery.pkg.runtime.RawExtension": {
+      "description": "RawExtension is used to hold extensions in external versions.\n\nTo use this, make a field which has RawExtension as its type in your external, versioned struct, and Object in your internal struct. You also need to register your various plugin types.\n\n// Internal package:\n\n\ttype MyAPIObject struct {\n\t\truntime.TypeMeta `json:\",inline\"`\n\t\tMyPlugin runtime.Object `json:\"myPlugin\"`\n\t}\n\n\ttype PluginA struct {\n\t\tAOption string `json:\"aOption\"`\n\t}\n\n// External package:\n\n\ttype MyAPIObject struct {\n\t\truntime.TypeMeta `json:\",inline\"`\n\t\tMyPlugin runtime.RawExtension `json:\"myPlugin\"`\n\t}\n\n\ttype PluginA struct {\n\t\tAOption string `json:\"aOption\"`\n\t}\n\n// On the wire, the JSON will look something like this:\n\n\t{\n\t\t\"kind\":\"MyAPIObject\",\n\t\t\"apiVersion\":\"v1\",\n\t\t\"myPlugin\": {\n\t\t\t\"kind\":\"PluginA\",\n\t\t\t\"aOption\":\"foo\",\n\t\t},\n\t}\n\nSo what happens? Decode first uses json or yaml to unmarshal the serialized data into your external MyAPIObject. That causes the raw JSON to be stored, but not unpacked. The next step is to copy (using pkg/conversion) into the internal struct. The runtime package's DefaultScheme has conversion functions installed which will unpack the JSON stored in RawExtension, turning it into the correct object type, and storing it in the Object. (TODO: In the case where the object is of an unknown type, a runtime.Unknown object will be created and stored.)",
+      "type": "object"
     },
     "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.AddressGroup": {
       "description": "AddressGroup represents an address group resource.",
@@ -2818,6 +3147,35 @@
         "spec": {
           "default": {},
           "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.AddressGroupSpec"
+        }
+      },
+      "example": {
+        "apiVersion": "sgroups.io/v1alpha1",
+        "kind": "AddressGroup",
+        "metadata": {
+          "name": "web-servers",
+          "namespace": "production",
+          "resourceVersion": "5"
+        },
+        "refs": [
+          {
+            "kind": "Host",
+            "name": "web-01",
+            "namespace": "production"
+          },
+          {
+            "kind": "Network",
+            "name": "corp-lan",
+            "namespace": "production"
+          }
+        ],
+        "spec": {
+          "comment": "Frontend web server group",
+          "defaultAction": "Allow",
+          "description": "Address group for production web servers",
+          "displayName": "Web Servers",
+          "logs": true,
+          "trace": false
         }
       }
     },
@@ -2847,6 +3205,30 @@
           "default": {},
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
         }
+      },
+      "example": {
+        "apiVersion": "sgroups.io/v1alpha1",
+        "items": [
+          {
+            "apiVersion": "sgroups.io/v1alpha1",
+            "kind": "AddressGroup",
+            "metadata": {
+              "name": "web-servers",
+              "namespace": "production",
+              "resourceVersion": "5"
+            },
+            "spec": {
+              "defaultAction": "Allow",
+              "displayName": "Web Servers",
+              "logs": true,
+              "trace": false
+            }
+          }
+        ],
+        "kind": "AddressGroupList",
+        "metadata": {
+          "resourceVersion": "10"
+        }
       }
     },
     "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.AddressGroupSpec": {
@@ -2875,17 +3257,15 @@
         "trace": {
           "type": "boolean"
         }
+      },
+      "example": {
+        "comment": "Frontend web server group",
+        "defaultAction": "Allow",
+        "description": "Address group for production web servers",
+        "displayName": "Web Servers",
+        "logs": true,
+        "trace": false
       }
-    },
-    "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.EndpointType": {
-      "description": "Endpoint type (AddressGroup, Service, FQDN, or CIDR)",
-      "type": "string",
-      "enum": [
-        "AddressGroup",
-        "Service",
-        "FQDN",
-        "CIDR"
-      ]
     },
     "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Host": {
       "description": "Host represents a host resource.",
@@ -2894,6 +3274,10 @@
         "apiVersion": {
           "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
           "type": "string"
+        },
+        "endpoints": {
+          "default": {},
+          "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.HostEndpoints"
         },
         "ips": {
           "default": {},
@@ -2922,6 +3306,45 @@
           "default": {},
           "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.HostSpec"
         }
+      },
+      "example": {
+        "apiVersion": "sgroups.io/v1alpha1",
+        "endpoints": {
+          "address": "10.0.0.1",
+          "ports": [
+            {
+              "name": "api",
+              "port": 8443
+            }
+          ]
+        },
+        "ips": {
+          "IPv4": [
+            "10.0.0.1"
+          ]
+        },
+        "kind": "Host",
+        "metaInfo": {
+          "hostName": "web-01.prod.local",
+          "os": "linux"
+        },
+        "metadata": {
+          "name": "web-01",
+          "namespace": "production",
+          "resourceVersion": "3"
+        },
+        "refs": [
+          {
+            "kind": "AddressGroup",
+            "name": "web-servers",
+            "namespace": "production"
+          }
+        ],
+        "spec": {
+          "comment": "Primary web server",
+          "description": "Production web server host",
+          "displayName": "Web Server 01"
+        }
       }
     },
     "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.HostBinding": {
@@ -2943,6 +3366,27 @@
         "spec": {
           "default": {},
           "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.HostBindingSpec"
+        }
+      },
+      "example": {
+        "apiVersion": "sgroups.io/v1alpha1",
+        "kind": "HostBinding",
+        "metadata": {
+          "name": "web-01-to-web-servers",
+          "namespace": "production",
+          "resourceVersion": "9"
+        },
+        "spec": {
+          "addressGroup": {
+            "name": "web-servers",
+            "namespace": "production"
+          },
+          "comment": "Binds web-01 host to web-servers AG",
+          "displayName": "Web-01 to Web-Servers",
+          "host": {
+            "name": "web-01",
+            "namespace": "production"
+          }
         }
       }
     },
@@ -2972,6 +3416,35 @@
           "default": {},
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
         }
+      },
+      "example": {
+        "apiVersion": "sgroups.io/v1alpha1",
+        "items": [
+          {
+            "apiVersion": "sgroups.io/v1alpha1",
+            "kind": "HostBinding",
+            "metadata": {
+              "name": "web-01-to-web-servers",
+              "namespace": "production",
+              "resourceVersion": "9"
+            },
+            "spec": {
+              "addressGroup": {
+                "name": "web-servers",
+                "namespace": "production"
+              },
+              "displayName": "Web-01 to Web-Servers",
+              "host": {
+                "name": "web-01",
+                "namespace": "production"
+              }
+            }
+          }
+        ],
+        "kind": "HostBindingList",
+        "metadata": {
+          "resourceVersion": "20"
+        }
       }
     },
     "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.HostBindingSpec": {
@@ -2995,6 +3468,76 @@
           "default": {},
           "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.ResourceIdentifier"
         }
+      },
+      "example": {
+        "addressGroup": {
+          "name": "web-servers",
+          "namespace": "production"
+        },
+        "comment": "Binds web-01 host to web-servers AG",
+        "description": "Host binding for production web server",
+        "displayName": "Web-01 to Web-Servers",
+        "host": {
+          "name": "web-01",
+          "namespace": "production"
+        }
+      }
+    },
+    "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.HostEndpointPort": {
+      "description": "HostEndpointPort is a named port exposed by a Host endpoint (read-only).",
+      "type": "object",
+      "required": [
+        "name",
+        "port"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "default": ""
+        },
+        "port": {
+          "type": "integer",
+          "format": "int64",
+          "default": 0
+        }
+      },
+      "example": {
+        "name": "api",
+        "port": 8443
+      }
+    },
+    "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.HostEndpoints": {
+      "description": "HostEndpoints describes endpoints published by a Host (read-only). If Address is empty, the backend falls back to the peer address observed on the gRPC connection from the host agent.",
+      "type": "object",
+      "required": [
+        "address",
+        "ports"
+      ],
+      "properties": {
+        "address": {
+          "type": "string",
+          "default": ""
+        },
+        "ports": {
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.HostEndpointPort"
+          }
+        }
+      },
+      "example": {
+        "address": "10.0.0.1",
+        "ports": [
+          {
+            "name": "api",
+            "port": 8443
+          },
+          {
+            "name": "metrics",
+            "port": 9090
+          }
+        ]
       }
     },
     "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.HostIPs": {
@@ -3019,6 +3562,15 @@
             "default": ""
           }
         }
+      },
+      "example": {
+        "IPv4": [
+          "10.0.0.1",
+          "10.0.0.2"
+        ],
+        "IPv6": [
+          "fe80::1"
+        ]
       }
     },
     "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.HostList": {
@@ -3046,6 +3598,28 @@
         "metadata": {
           "default": {},
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
+        }
+      },
+      "example": {
+        "apiVersion": "sgroups.io/v1alpha1",
+        "items": [
+          {
+            "apiVersion": "sgroups.io/v1alpha1",
+            "kind": "Host",
+            "metadata": {
+              "name": "web-01",
+              "namespace": "production",
+              "resourceVersion": "3"
+            },
+            "spec": {
+              "comment": "Primary web server",
+              "displayName": "Web Server 01"
+            }
+          }
+        ],
+        "kind": "HostList",
+        "metadata": {
+          "resourceVersion": "15"
         }
       }
     },
@@ -3085,6 +3659,14 @@
           "type": "string",
           "default": ""
         }
+      },
+      "example": {
+        "hostName": "web-01.prod.local",
+        "kernelVersion": "5.15.0-91-generic",
+        "os": "linux",
+        "platform": "ubuntu",
+        "platformFamily": "debian",
+        "platformVersion": "22.04"
       }
     },
     "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.HostSpec": {
@@ -3100,15 +3682,12 @@
         "displayName": {
           "type": "string"
         }
+      },
+      "example": {
+        "comment": "Primary web server",
+        "description": "Production web server host",
+        "displayName": "Web Server 01"
       }
-    },
-    "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.IpAddrFamily": {
-      "description": "IP address family (IPv4 or IPv6)",
-      "type": "string",
-      "enum": [
-        "IPv4",
-        "IPv6"
-      ]
     },
     "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Network": {
       "description": "Network represents a network resource.",
@@ -3137,6 +3716,28 @@
           "default": {},
           "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.NetworkSpec"
         }
+      },
+      "example": {
+        "apiVersion": "sgroups.io/v1alpha1",
+        "kind": "Network",
+        "metadata": {
+          "name": "corp-lan",
+          "namespace": "production",
+          "resourceVersion": "7"
+        },
+        "refs": [
+          {
+            "kind": "AddressGroup",
+            "name": "web-servers",
+            "namespace": "production"
+          }
+        ],
+        "spec": {
+          "CIDR": "10.10.0.0/16",
+          "comment": "Main office network",
+          "description": "Primary corporate network segment",
+          "displayName": "Corp LAN"
+        }
       }
     },
     "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.NetworkBinding": {
@@ -3158,6 +3759,27 @@
         "spec": {
           "default": {},
           "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.NetworkBindingSpec"
+        }
+      },
+      "example": {
+        "apiVersion": "sgroups.io/v1alpha1",
+        "kind": "NetworkBinding",
+        "metadata": {
+          "name": "corp-lan-to-web-servers",
+          "namespace": "production",
+          "resourceVersion": "11"
+        },
+        "spec": {
+          "addressGroup": {
+            "name": "web-servers",
+            "namespace": "production"
+          },
+          "comment": "Binds corp-lan network to web-servers AG",
+          "displayName": "Corp-LAN to Web-Servers",
+          "network": {
+            "name": "corp-lan",
+            "namespace": "production"
+          }
         }
       }
     },
@@ -3187,6 +3809,35 @@
           "default": {},
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
         }
+      },
+      "example": {
+        "apiVersion": "sgroups.io/v1alpha1",
+        "items": [
+          {
+            "apiVersion": "sgroups.io/v1alpha1",
+            "kind": "NetworkBinding",
+            "metadata": {
+              "name": "corp-lan-to-web-servers",
+              "namespace": "production",
+              "resourceVersion": "11"
+            },
+            "spec": {
+              "addressGroup": {
+                "name": "web-servers",
+                "namespace": "production"
+              },
+              "displayName": "Corp-LAN to Web-Servers",
+              "network": {
+                "name": "corp-lan",
+                "namespace": "production"
+              }
+            }
+          }
+        ],
+        "kind": "NetworkBindingList",
+        "metadata": {
+          "resourceVersion": "25"
+        }
       }
     },
     "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.NetworkBindingSpec": {
@@ -3209,6 +3860,19 @@
         "network": {
           "default": {},
           "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.ResourceIdentifier"
+        }
+      },
+      "example": {
+        "addressGroup": {
+          "name": "web-servers",
+          "namespace": "production"
+        },
+        "comment": "Binds corp-lan network to web-servers AG",
+        "description": "Network binding for production network segment",
+        "displayName": "Corp-LAN to Web-Servers",
+        "network": {
+          "name": "corp-lan",
+          "namespace": "production"
         }
       }
     },
@@ -3238,6 +3902,28 @@
           "default": {},
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
         }
+      },
+      "example": {
+        "apiVersion": "sgroups.io/v1alpha1",
+        "items": [
+          {
+            "apiVersion": "sgroups.io/v1alpha1",
+            "kind": "Network",
+            "metadata": {
+              "name": "corp-lan",
+              "namespace": "production",
+              "resourceVersion": "7"
+            },
+            "spec": {
+              "CIDR": "10.10.0.0/16",
+              "displayName": "Corp LAN"
+            }
+          }
+        ],
+        "kind": "NetworkList",
+        "metadata": {
+          "resourceVersion": "12"
+        }
       }
     },
     "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.NetworkSpec": {
@@ -3256,16 +3942,131 @@
         "displayName": {
           "type": "string"
         }
+      },
+      "example": {
+        "CIDR": "10.10.0.0/16",
+        "comment": "Main office network",
+        "description": "Primary corporate network segment",
+        "displayName": "Corp LAN"
       }
     },
-    "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Protocol": {
-      "description": "Network transport protocol (TCP, UDP, or ICMP)",
-      "type": "string",
-      "enum": [
-        "TCP",
-        "UDP",
-        "ICMP"
-      ]
+    "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Nft": {
+      "description": "Nft is one host's nftables ruleset, as reported by the host-agent.",
+      "type": "object",
+      "properties": {
+        "json": {
+          "description": "JSON is the `nft -j` ruleset as structured JSON; pointer so it omits (not \"json\": null) when no parseable JSON is returned.",
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension"
+        },
+        "text": {
+          "description": "Text is the `nft list ruleset` output.",
+          "type": "string"
+        }
+      },
+      "example": {
+        "json": {
+          "nftables": [
+            {
+              "table": {
+                "family": "inet",
+                "handle": 1,
+                "name": "filter"
+              }
+            }
+          ]
+        },
+        "text": "table inet filter {\n}\n"
+      }
+    },
+    "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.NftList": {
+      "description": "NftList is the hosts/nft list response (and per-event watch payload).",
+      "type": "object",
+      "required": [
+        "items"
+      ],
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "host": {
+          "default": {},
+          "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.ResourceIdentifier"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Nft"
+          }
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "default": {},
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
+        }
+      },
+      "example": {
+        "apiVersion": "sgroups.io/v1alpha1",
+        "host": {
+          "name": "web-01",
+          "namespace": "production"
+        },
+        "items": [
+          {
+            "json": {
+              "nftables": [
+                {
+                  "table": {
+                    "family": "inet",
+                    "handle": 1,
+                    "name": "filter"
+                  }
+                }
+              ]
+            },
+            "text": "table inet filter {\n}\n"
+          }
+        ],
+        "kind": "NftList"
+      }
+    },
+    "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Process": {
+      "description": "Process represents a kernel-reported process that owns a socket.",
+      "type": "object",
+      "required": [
+        "pid"
+      ],
+      "properties": {
+        "cmdLine": {
+          "type": "string"
+        },
+        "comm": {
+          "type": "string"
+        },
+        "exe": {
+          "type": "string"
+        },
+        "fd": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pid": {
+          "type": "integer",
+          "format": "int32",
+          "default": 0
+        }
+      },
+      "example": {
+        "cmdLine": "nginx: worker process",
+        "comm": "nginx",
+        "exe": "/usr/sbin/nginx",
+        "fd": 6,
+        "pid": 200
+      }
     },
     "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.ResourceIdentifier": {
       "description": "ResourceIdentifier identifies a resource by name and namespace.",
@@ -3277,6 +4078,10 @@
         "namespace": {
           "type": "string"
         }
+      },
+      "example": {
+        "name": "web-servers",
+        "namespace": "production"
       }
     },
     "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.ResourceRef": {
@@ -3292,6 +4097,11 @@
         "namespace": {
           "type": "string"
         }
+      },
+      "example": {
+        "kind": "Host",
+        "name": "web-01",
+        "namespace": "production"
       }
     },
     "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Rule": {
@@ -3313,6 +4123,42 @@
         "spec": {
           "default": {},
           "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.RuleSpec"
+        }
+      },
+      "example": {
+        "apiVersion": "sgroups.io/v1alpha1",
+        "kind": "Rule",
+        "metadata": {
+          "name": "allow-web-to-db-http",
+          "namespace": "production",
+          "resourceVersion": "20"
+        },
+        "spec": {
+          "action": "Allow",
+          "displayName": "Allow HTTP from web to DB",
+          "endpoints": {
+            "local": {
+              "name": "web-servers",
+              "namespace": "production",
+              "type": "AddressGroup"
+            },
+            "remote": {
+              "name": "db-servers",
+              "namespace": "production",
+              "type": "AddressGroup"
+            }
+          },
+          "session": {
+            "traffic": "Ingress"
+          },
+          "transport": {
+            "entries": [
+              {
+                "ports": "80,443"
+              }
+            ],
+            "protocol": "TCP"
+          }
         }
       }
     },
@@ -3345,6 +4191,11 @@
         "value": {
           "type": "string"
         }
+      },
+      "example": {
+        "name": "web-servers",
+        "namespace": "production",
+        "type": "AddressGroup"
       }
     },
     "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.RuleEndpoints": {
@@ -3356,6 +4207,18 @@
         },
         "remote": {
           "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.RuleEndpoint"
+        }
+      },
+      "example": {
+        "local": {
+          "name": "web-servers",
+          "namespace": "production",
+          "type": "AddressGroup"
+        },
+        "remote": {
+          "name": "db-servers",
+          "namespace": "production",
+          "type": "AddressGroup"
         }
       }
     },
@@ -3385,6 +4248,36 @@
           "default": {},
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
         }
+      },
+      "example": {
+        "apiVersion": "sgroups.io/v1alpha1",
+        "items": [
+          {
+            "apiVersion": "sgroups.io/v1alpha1",
+            "kind": "Rule",
+            "metadata": {
+              "name": "allow-web-to-db-http",
+              "namespace": "production",
+              "resourceVersion": "20"
+            },
+            "spec": {
+              "action": "Allow",
+              "displayName": "Allow HTTP from web to DB",
+              "transport": {
+                "entries": [
+                  {
+                    "ports": "80,443"
+                  }
+                ],
+                "protocol": "TCP"
+              }
+            }
+          }
+        ],
+        "kind": "RuleList",
+        "metadata": {
+          "resourceVersion": "40"
+        }
       }
     },
     "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.RuleSession": {
@@ -3399,6 +4292,9 @@
             "Egress"
           ]
         }
+      },
+      "example": {
+        "traffic": "Ingress"
       }
     },
     "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.RuleSpec": {
@@ -3430,6 +4326,37 @@
         "transport": {
           "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.RuleTransport"
         }
+      },
+      "example": {
+        "action": "Allow",
+        "comment": "Production HTTP rule",
+        "description": "Allow HTTP traffic from web servers to database servers",
+        "displayName": "Allow HTTP from web to DB",
+        "endpoints": {
+          "local": {
+            "name": "web-servers",
+            "namespace": "production",
+            "type": "AddressGroup"
+          },
+          "remote": {
+            "name": "db-servers",
+            "namespace": "production",
+            "type": "AddressGroup"
+          }
+        },
+        "session": {
+          "traffic": "Ingress"
+        },
+        "transport": {
+          "IPv": "IPv4",
+          "entries": [
+            {
+              "description": "HTTP traffic",
+              "ports": "80,443"
+            }
+          ],
+          "protocol": "TCP"
+        }
       }
     },
     "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.RuleTransport": {
@@ -3458,6 +4385,16 @@
             "ICMP"
           ]
         }
+      },
+      "example": {
+        "IPv": "IPv4",
+        "entries": [
+          {
+            "description": "HTTP traffic",
+            "ports": "80,443"
+          }
+        ],
+        "protocol": "TCP"
       }
     },
     "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Service": {
@@ -3487,6 +4424,39 @@
           "default": {},
           "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.ServiceSpec"
         }
+      },
+      "example": {
+        "apiVersion": "sgroups.io/v1alpha1",
+        "kind": "Service",
+        "metadata": {
+          "name": "web-service",
+          "namespace": "production",
+          "resourceVersion": "13"
+        },
+        "refs": [
+          {
+            "kind": "AddressGroup",
+            "name": "web-servers",
+            "namespace": "production"
+          }
+        ],
+        "spec": {
+          "comment": "HTTP/HTTPS web service",
+          "description": "Service definition for web traffic",
+          "displayName": "Web Service",
+          "transports": [
+            {
+              "IPv": "IPv4",
+              "entries": [
+                {
+                  "description": "HTTP traffic",
+                  "ports": "80,443"
+                }
+              ],
+              "protocol": "TCP"
+            }
+          ]
+        }
       }
     },
     "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.ServiceBinding": {
@@ -3508,6 +4478,27 @@
         "spec": {
           "default": {},
           "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.ServiceBindingSpec"
+        }
+      },
+      "example": {
+        "apiVersion": "sgroups.io/v1alpha1",
+        "kind": "ServiceBinding",
+        "metadata": {
+          "name": "web-service-to-web-servers",
+          "namespace": "production",
+          "resourceVersion": "14"
+        },
+        "spec": {
+          "addressGroup": {
+            "name": "web-servers",
+            "namespace": "production"
+          },
+          "comment": "Binds web-service to web-servers AG",
+          "displayName": "Web-Service to Web-Servers",
+          "service": {
+            "name": "web-service",
+            "namespace": "production"
+          }
         }
       }
     },
@@ -3537,6 +4528,35 @@
           "default": {},
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
         }
+      },
+      "example": {
+        "apiVersion": "sgroups.io/v1alpha1",
+        "items": [
+          {
+            "apiVersion": "sgroups.io/v1alpha1",
+            "kind": "ServiceBinding",
+            "metadata": {
+              "name": "web-service-to-web-servers",
+              "namespace": "production",
+              "resourceVersion": "14"
+            },
+            "spec": {
+              "addressGroup": {
+                "name": "web-servers",
+                "namespace": "production"
+              },
+              "displayName": "Web-Service to Web-Servers",
+              "service": {
+                "name": "web-service",
+                "namespace": "production"
+              }
+            }
+          }
+        ],
+        "kind": "ServiceBindingList",
+        "metadata": {
+          "resourceVersion": "35"
+        }
       }
     },
     "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.ServiceBindingSpec": {
@@ -3559,6 +4579,19 @@
         "service": {
           "default": {},
           "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.ResourceIdentifier"
+        }
+      },
+      "example": {
+        "addressGroup": {
+          "name": "web-servers",
+          "namespace": "production"
+        },
+        "comment": "Binds web-service to web-servers AG",
+        "description": "Service binding for production web service",
+        "displayName": "Web-Service to Web-Servers",
+        "service": {
+          "name": "web-service",
+          "namespace": "production"
         }
       }
     },
@@ -3588,6 +4621,37 @@
           "default": {},
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
         }
+      },
+      "example": {
+        "apiVersion": "sgroups.io/v1alpha1",
+        "items": [
+          {
+            "apiVersion": "sgroups.io/v1alpha1",
+            "kind": "Service",
+            "metadata": {
+              "name": "web-service",
+              "namespace": "production",
+              "resourceVersion": "13"
+            },
+            "spec": {
+              "displayName": "Web Service",
+              "transports": [
+                {
+                  "entries": [
+                    {
+                      "ports": "80,443"
+                    }
+                  ],
+                  "protocol": "TCP"
+                }
+              ]
+            }
+          }
+        ],
+        "kind": "ServiceList",
+        "metadata": {
+          "resourceVersion": "30"
+        }
       }
     },
     "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.ServiceSpec": {
@@ -3610,6 +4674,23 @@
             "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.ServiceTransport"
           }
         }
+      },
+      "example": {
+        "comment": "HTTP/HTTPS web service",
+        "description": "Service definition for web traffic",
+        "displayName": "Web Service",
+        "transports": [
+          {
+            "IPv": "IPv4",
+            "entries": [
+              {
+                "description": "HTTP traffic",
+                "ports": "80,443"
+              }
+            ],
+            "protocol": "TCP"
+          }
+        ]
       }
     },
     "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.ServiceTransport": {
@@ -3638,6 +4719,16 @@
             "ICMP"
           ]
         }
+      },
+      "example": {
+        "IPv": "IPv4",
+        "entries": [
+          {
+            "description": "HTTP traffic",
+            "ports": "80,443"
+          }
+        ],
+        "protocol": "TCP"
       }
     },
     "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.ServiceTransportEntry": {
@@ -3661,6 +4752,139 @@
             "default": 0
           }
         }
+      },
+      "example": {
+        "comment": "Standard HTTP ports",
+        "description": "HTTP traffic",
+        "ports": "80,443"
+      }
+    },
+    "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.SocketStat": {
+      "description": "SocketStat is a single socket-statistics entry returned by a host-agent.",
+      "type": "object",
+      "properties": {
+        "family": {
+          "type": "string",
+          "enum": [
+            "IPv4",
+            "IPv6"
+          ]
+        },
+        "ifname": {
+          "type": "string"
+        },
+        "inode": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "localAddr": {
+          "type": "string"
+        },
+        "localPort": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "processes": {
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Process"
+          }
+        },
+        "protocol": {
+          "type": "string"
+        },
+        "remoteAddr": {
+          "type": "string"
+        },
+        "remotePort": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "Established",
+            "SynSent",
+            "SynRecv",
+            "FinWait1",
+            "FinWait2",
+            "TimeWait",
+            "Close",
+            "CloseWait",
+            "LastAck",
+            "Listen",
+            "Closing",
+            "NewSynRecv"
+          ]
+        }
+      },
+      "example": {
+        "family": "IPv4",
+        "inode": 2,
+        "localAddr": "0.0.0.0",
+        "localPort": 80,
+        "processes": [
+          {
+            "comm": "nginx",
+            "exe": "/usr/sbin/nginx",
+            "fd": 6,
+            "pid": 200
+          }
+        ],
+        "protocol": "tcp",
+        "state": "Listen"
+      }
+    },
+    "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.SocketStatList": {
+      "description": "SocketStatList is the list response for the sockstats subresource. Also used as the per-event payload for watch (one event = batch of stats).",
+      "type": "object",
+      "required": [
+        "items"
+      ],
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "host": {
+          "default": {},
+          "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.ResourceIdentifier"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.SocketStat"
+          }
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "default": {},
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
+        }
+      },
+      "example": {
+        "apiVersion": "sgroups.io/v1alpha1",
+        "items": [
+          {
+            "family": "IPv4",
+            "localAddr": "0.0.0.0",
+            "localPort": 80,
+            "processes": [
+              {
+                "comm": "nginx",
+                "pid": 200
+              }
+            ],
+            "protocol": "tcp",
+            "state": "Listen"
+          }
+        ],
+        "kind": "SocketStatList"
       }
     },
     "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Tenant": {
@@ -3682,6 +4906,19 @@
         "spec": {
           "default": {},
           "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.TenantSpec"
+        }
+      },
+      "example": {
+        "apiVersion": "sgroups.io/v1alpha1",
+        "kind": "Tenant",
+        "metadata": {
+          "name": "production",
+          "resourceVersion": "1"
+        },
+        "spec": {
+          "comment": "Production environment tenant",
+          "description": "Contains production workloads and services",
+          "displayName": "Production"
         }
       }
     },
@@ -3711,6 +4948,27 @@
           "default": {},
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
         }
+      },
+      "example": {
+        "apiVersion": "sgroups.io/v1alpha1",
+        "items": [
+          {
+            "apiVersion": "sgroups.io/v1alpha1",
+            "kind": "Tenant",
+            "metadata": {
+              "name": "production",
+              "resourceVersion": "1"
+            },
+            "spec": {
+              "comment": "Production environment tenant",
+              "displayName": "Production"
+            }
+          }
+        ],
+        "kind": "TenantList",
+        "metadata": {
+          "resourceVersion": "42"
+        }
       }
     },
     "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.TenantSpec": {
@@ -3726,16 +4984,12 @@
         "displayName": {
           "type": "string"
         }
+      },
+      "example": {
+        "comment": "Production environment tenant",
+        "description": "Contains production workloads and services",
+        "displayName": "Production"
       }
-    },
-    "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Traffic": {
-      "description": "Traffic direction (Both, Ingress, or Egress)",
-      "type": "string",
-      "enum": [
-        "Both",
-        "Ingress",
-        "Egress"
-      ]
     },
     "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.TransportEntry": {
       "description": "TransportEntry represents a transport entry (ports or ICMP types).",
@@ -3758,6 +5012,11 @@
             "default": 0
           }
         }
+      },
+      "example": {
+        "comment": "Standard HTTP ports",
+        "description": "HTTP traffic",
+        "ports": "80,443"
       }
     }
   }

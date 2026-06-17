@@ -2,6 +2,7 @@ package v1alpha1
 
 import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/apimachinery/pkg/runtime"
 )
 
 // Resource kind constants.
@@ -17,6 +18,13 @@ const (
 
 	KindHost     = "Host"
 	KindHostList = "HostList"
+
+	KindSocketStat        = "SocketStat"
+	KindSocketStatList    = "SocketStatList"
+	KindSocketStatOptions = "SocketStatOptions"
+
+	KindNft     = "Nft"
+	KindNftList = "NftList"
 
 	KindHostBinding     = "HostBinding"
 	KindHostBindingList = "HostBindingList"
@@ -45,6 +53,12 @@ const (
 	ResourceServices        = "services"
 	ResourceServiceBindings = "servicebindings"
 	ResourceRules           = "rules"
+
+	// SubresourceHostSocketStats is the subresource name for hosts/sockstats.
+	SubresourceHostSocketStats = "sockstats"
+
+	// SubresourceHostNft is the subresource name for hosts/nft.
+	SubresourceHostNft = "nft"
 )
 
 // Action represents the default action for an AddressGroup.
@@ -160,6 +174,20 @@ type HostMetaInfo struct {
 	KernelVersion   string `json:"kernelVersion"`
 }
 
+// HostEndpointPort is a named port exposed by a Host endpoint (read-only).
+type HostEndpointPort struct {
+	Name string `json:"name"`
+	Port uint32 `json:"port"`
+}
+
+// HostEndpoints describes endpoints published by a Host (read-only).
+// If Address is empty, the backend falls back to the peer address observed
+// on the gRPC connection from the host agent.
+type HostEndpoints struct {
+	Address string             `json:"address"`
+	Ports   []HostEndpointPort `json:"ports"`
+}
+
 // HostSpec defines the desired state of a Host.
 type HostSpec struct {
 	DisplayName string `json:"displayName,omitempty"`
@@ -176,6 +204,7 @@ type Host struct {
 	Refs              []ResourceRef `json:"refs,omitempty"`
 	IPs               HostIPs       `json:"ips,omitempty"`
 	MetaInfo          HostMetaInfo  `json:"metaInfo,omitempty"`
+	Endpoints         HostEndpoints `json:"endpoints,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -401,6 +430,107 @@ type RuleList struct {
 	Items           []Rule `json:"items"`
 }
 
+type ConnState string
+
+const (
+	ConnStateUnknown     ConnState = "Unknown"
+	ConnStateEstablished ConnState = "Established"
+	ConnStateSynSent     ConnState = "SynSent"
+	ConnStateSynRecv     ConnState = "SynRecv"
+	ConnStateFinWait1    ConnState = "FinWait1"
+	ConnStateFinWait2    ConnState = "FinWait2"
+	ConnStateTimeWait    ConnState = "TimeWait"
+	ConnStateClose       ConnState = "Close"
+	ConnStateCloseWait   ConnState = "CloseWait"
+	ConnStateLastAck     ConnState = "LastAck"
+	ConnStateListen      ConnState = "Listen"
+	ConnStateClosing     ConnState = "Closing"
+	ConnStateNewSynRecv  ConnState = "NewSynRecv"
+)
+
+// Process represents a kernel-reported process that owns a socket.
+type Process struct {
+	PID     int32  `json:"pid"`
+	Comm    string `json:"comm,omitempty"`
+	CmdLine string `json:"cmdLine,omitempty"`
+	Exe     string `json:"exe,omitempty"`
+	FD      int32  `json:"fd,omitempty"`
+}
+
+// SocketStatSelector is a single-statistic filter accepted by the subresource.
+// Empty fields are wildcards. Multiple selectors in a request are OR-joined.
+type SocketStatSelector struct {
+	Protocol   string       `json:"protocol,omitempty"`
+	Family     IpAddrFamily `json:"family,omitempty"`
+	State      ConnState    `json:"state,omitempty"`
+	LocalAddr  string       `json:"localAddr,omitempty"`
+	LocalPort  int32        `json:"localPort,omitempty"`
+	RemoteAddr string       `json:"remoteAddr,omitempty"`
+	RemotePort int32        `json:"remotePort,omitempty"`
+	Ifname     string       `json:"ifname,omitempty"`
+	Inode      int64        `json:"inode,omitempty"`
+	PID        int32        `json:"pid,omitempty"`
+	Comm       string       `json:"comm,omitempty"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// SocketStatOptions is the body/query payload for the sockstats subresource.
+// Watch toggles between list and watch behavior — same URL pattern as Pod log.
+type SocketStatOptions struct {
+	metav1.TypeMeta `json:",inline"`
+	// Watch turns the request into a stream of SocketStatList chunks.
+	Watch bool `json:"watch,omitempty"`
+	// Selectors are OR-joined filters; empty means "all".
+	Selectors []SocketStatSelector `json:"selectors,omitempty"`
+}
+
+// SocketStat is a single socket-statistics entry returned by a host-agent.
+type SocketStat struct {
+	Protocol   string       `json:"protocol,omitempty"`
+	Family     IpAddrFamily `json:"family,omitempty"`
+	State      ConnState    `json:"state,omitempty"`
+	LocalAddr  string       `json:"localAddr,omitempty"`
+	LocalPort  int32        `json:"localPort,omitempty"`
+	RemoteAddr string       `json:"remoteAddr,omitempty"`
+	RemotePort int32        `json:"remotePort,omitempty"`
+	Ifname     string       `json:"ifname,omitempty"`
+	Inode      int64        `json:"inode,omitempty"`
+	Processes  []Process    `json:"processes,omitempty"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// SocketStatList is the list response for the sockstats subresource.
+// Also used as the per-event payload for watch (one event = batch of stats).
+type SocketStatList struct {
+	metav1.TypeMeta `json:",inline"`
+	metav1.ListMeta `json:"metadata,omitempty"`
+	Host            ResourceIdentifier `json:"host,omitempty"`
+	Items           []SocketStat       `json:"items"`
+}
+
+// NftOptions is the hosts/nft query payload; Watch is the only knob (no selectors).
+type NftOptions struct {
+	Watch bool `json:"watch,omitempty"`
+}
+
+// Nft is one host's nftables ruleset, as reported by the host-agent.
+type Nft struct {
+	// Text is the `nft list ruleset` output.
+	Text string `json:"text,omitempty"`
+	// JSON is the `nft -j` ruleset as structured JSON; pointer so it omits
+	// (not "json": null) when no parseable JSON is returned.
+	JSON *runtime.RawExtension `json:"json,omitempty"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// NftList is the hosts/nft list response (and per-event watch payload).
+type NftList struct {
+	metav1.TypeMeta `json:",inline"`
+	metav1.ListMeta `json:"metadata,omitempty"`
+	Host            ResourceIdentifier `json:"host,omitempty"`
+	Items           []Nft              `json:"items"`
+}
+
 // ---------- OpenAPIModelName ----------
 // The Kubernetes DefinitionNamer converts Go import paths (slashes) to
 // dot-separated names. Types must implement OpenAPIModelName to match,
@@ -432,6 +562,8 @@ func (NetworkBindingSpec) OpenAPIModelName() string { return OpenAPIPrefix + "Ne
 func (ResourceIdentifier) OpenAPIModelName() string { return OpenAPIPrefix + "ResourceIdentifier" }
 func (ResourceRef) OpenAPIModelName() string        { return OpenAPIPrefix + "ResourceRef" }
 func (HostIPs) OpenAPIModelName() string            { return OpenAPIPrefix + "HostIPs" }
+func (HostEndpoints) OpenAPIModelName() string      { return OpenAPIPrefix + "HostEndpoints" }
+func (HostEndpointPort) OpenAPIModelName() string   { return OpenAPIPrefix + "HostEndpointPort" }
 func (HostMetaInfo) OpenAPIModelName() string       { return OpenAPIPrefix + "HostMetaInfo" }
 func (Service) OpenAPIModelName() string            { return OpenAPIPrefix + "Service" }
 func (ServiceList) OpenAPIModelName() string        { return OpenAPIPrefix + "ServiceList" }
@@ -451,3 +583,10 @@ func (RuleEndpoints) OpenAPIModelName() string      { return OpenAPIPrefix + "Ru
 func (RuleSession) OpenAPIModelName() string        { return OpenAPIPrefix + "RuleSession" }
 func (RuleTransport) OpenAPIModelName() string      { return OpenAPIPrefix + "RuleTransport" }
 func (TransportEntry) OpenAPIModelName() string     { return OpenAPIPrefix + "TransportEntry" }
+func (SocketStat) OpenAPIModelName() string         { return OpenAPIPrefix + "SocketStat" }
+func (SocketStatList) OpenAPIModelName() string     { return OpenAPIPrefix + "SocketStatList" }
+func (SocketStatOptions) OpenAPIModelName() string  { return OpenAPIPrefix + "SocketStatOptions" }
+func (SocketStatSelector) OpenAPIModelName() string { return OpenAPIPrefix + "SocketStatSelector" }
+func (Process) OpenAPIModelName() string            { return OpenAPIPrefix + "Process" }
+func (Nft) OpenAPIModelName() string                { return OpenAPIPrefix + "Nft" }
+func (NftList) OpenAPIModelName() string            { return OpenAPIPrefix + "NftList" }

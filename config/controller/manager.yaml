@@ -1,0 +1,85 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sgroups-k8s-controller
+  namespace: sgroups-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sgroups-k8s-controller
+  template:
+    metadata:
+      labels:
+        app: sgroups-k8s-controller
+    spec:
+      serviceAccountName: sgroups-k8s-controller
+      containers:
+        - name: controller
+          image: sgroups-k8s-controller:latest
+          imagePullPolicy: IfNotPresent
+          args:
+            - --leader-elect=true
+            - --leader-election-id=sgroups-tenant-namespace-controller
+            - --leader-election-namespace=sgroups-system
+            - --metrics-bind-address=:8080
+            - --health-probe-bind-address=:8081
+            - --v=2
+          ports:
+            - name: metrics
+              containerPort: 8080
+            - name: probes
+              containerPort: 8081
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: probes
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: probes
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 128Mi
+          securityContext:
+            runAsNonRoot: true
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: ["ALL"]
+            seccompProfile:
+              type: RuntimeDefault
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sgroups-k8s-controller
+  namespace: sgroups-system
+  labels:
+    app: sgroups-k8s-controller
+spec:
+  selector:
+    app: sgroups-k8s-controller
+  ports:
+    - name: metrics
+      port: 8080
+      targetPort: metrics
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: sgroups-k8s-controller
+  namespace: sgroups-system
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: sgroups-k8s-controller

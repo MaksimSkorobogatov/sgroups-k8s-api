@@ -148,6 +148,87 @@ func TestHostFromProtoWithIPs(t *testing.T) {
 	require.Equal(t, "5.15.0", got.MetaInfo.KernelVersion)
 }
 
+func TestHostFromProtoWithEndpoints(t *testing.T) {
+	host := &sgroupsv1.Host{
+		Metadata: &commonpb.Metadata{Name: "h-ep", Namespace: "default"},
+		Spec: &sgroupsv1.Host_Spec{
+			DisplayName: "H-EP",
+			Endpoints: &sgroupsv1.Host_Spec_Endpoints{
+				Address: "10.0.0.5",
+				Ports: []*sgroupsv1.Host_Spec_Endpoints_Port{
+					{Name: "api", Port: 8443},
+					{Name: "metrics", Port: 9090},
+				},
+			},
+		},
+	}
+
+	got := HostFromProto(host)
+	require.NotNil(t, got)
+	require.Equal(t, "10.0.0.5", got.Endpoints.Address)
+	require.Len(t, got.Endpoints.Ports, 2)
+	require.Equal(t, "api", got.Endpoints.Ports[0].Name)
+	require.Equal(t, uint32(8443), got.Endpoints.Ports[0].Port)
+	require.Equal(t, "metrics", got.Endpoints.Ports[1].Name)
+	require.Equal(t, uint32(9090), got.Endpoints.Ports[1].Port)
+}
+
+func TestHostFromProtoExtWithEndpoints(t *testing.T) {
+	ext := &sgroupsv1.HostResp_HostExt{
+		Metadata: &commonpb.Metadata{Name: "h-ep-ext", Namespace: "default"},
+		Spec: &sgroupsv1.Host_Spec{
+			DisplayName: "H-EP-Ext",
+			Endpoints: &sgroupsv1.Host_Spec_Endpoints{
+				Address: "", // falls back to peer addr server-side
+				Ports: []*sgroupsv1.Host_Spec_Endpoints_Port{
+					{Name: "health", Port: 8081},
+				},
+			},
+		},
+	}
+
+	got := HostFromProtoExt(ext)
+	require.NotNil(t, got)
+	require.Empty(t, got.Endpoints.Address)
+	require.Len(t, got.Endpoints.Ports, 1)
+	require.Equal(t, "health", got.Endpoints.Ports[0].Name)
+	require.Equal(t, uint32(8081), got.Endpoints.Ports[0].Port)
+}
+
+func TestHostFromProtoNoEndpoints(t *testing.T) {
+	host := &sgroupsv1.Host{
+		Metadata: &commonpb.Metadata{Name: "h-no-ep", Namespace: "default"},
+		Spec:     &sgroupsv1.Host_Spec{DisplayName: "H-NoEP"},
+	}
+
+	got := HostFromProto(host)
+	require.NotNil(t, got)
+	require.Empty(t, got.Endpoints.Address)
+	require.Empty(t, got.Endpoints.Ports)
+}
+
+func TestHostFromProtoEndpointsNilPortEntry(t *testing.T) {
+	host := &sgroupsv1.Host{
+		Metadata: &commonpb.Metadata{Name: "h-nil-port", Namespace: "default"},
+		Spec: &sgroupsv1.Host_Spec{
+			Endpoints: &sgroupsv1.Host_Spec_Endpoints{
+				Address: "10.0.0.6",
+				Ports: []*sgroupsv1.Host_Spec_Endpoints_Port{
+					{Name: "api", Port: 8443},
+					nil, // must be skipped
+					{Name: "metrics", Port: 9090},
+				},
+			},
+		},
+	}
+
+	got := HostFromProto(host)
+	require.NotNil(t, got)
+	require.Len(t, got.Endpoints.Ports, 2)
+	require.Equal(t, "api", got.Endpoints.Ports[0].Name)
+	require.Equal(t, "metrics", got.Endpoints.Ports[1].Name)
+}
+
 func TestHostFromProtoExtWithIPs(t *testing.T) {
 	ext := &sgroupsv1.HostResp_HostExt{
 		Metadata: &commonpb.Metadata{Name: "h2", Namespace: "default"},

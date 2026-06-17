@@ -112,6 +112,12 @@ func modifyStructFieldsWithEnums(defs map[string]common.OpenAPIDefinition) {
 		string(EndpointTypeFQDN),
 		string(EndpointTypeCIDR),
 	}
+	connStateEnum := []interface{}{
+		string(ConnStateEstablished), string(ConnStateSynSent), string(ConnStateSynRecv),
+		string(ConnStateFinWait1), string(ConnStateFinWait2), string(ConnStateTimeWait),
+		string(ConnStateClose), string(ConnStateCloseWait), string(ConnStateLastAck),
+		string(ConnStateListen), string(ConnStateClosing), string(ConnStateNewSynRecv),
+	}
 
 	setFieldEnum(defs, AddressGroupSpec{}.OpenAPIModelName(), "defaultAction", actionEnum)
 	setFieldEnum(defs, ServiceTransport{}.OpenAPIModelName(), "protocol", protocolEnum)
@@ -121,6 +127,8 @@ func modifyStructFieldsWithEnums(defs map[string]common.OpenAPIDefinition) {
 	setFieldEnum(defs, RuleSpec{}.OpenAPIModelName(), "action", actionEnum)
 	setFieldEnum(defs, RuleSession{}.OpenAPIModelName(), "traffic", trafficEnum)
 	setFieldEnum(defs, RuleEndpoint{}.OpenAPIModelName(), "type", endpointTypeEnum)
+	setFieldEnum(defs, SocketStat{}.OpenAPIModelName(), "state", connStateEnum)
+	setFieldEnum(defs, SocketStat{}.OpenAPIModelName(), "family", ipvEnum)
 }
 
 func setFieldEnum(defs map[string]common.OpenAPIDefinition, defKey, fieldName string, enum []interface{}) {

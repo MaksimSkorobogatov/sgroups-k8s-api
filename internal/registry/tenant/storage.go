@@ -12,7 +12,7 @@ func NewStorage(c *client.Client, opts options.StorageOptions) *generic.Storage[
 	return generic.NewStorage(
 		&backend{client: c},
 		opts,
-		nil,
+		&tenantStrategy{},
 		func() *v1alpha1.Tenant { return &v1alpha1.Tenant{} },
 		func() *v1alpha1.TenantList { return &v1alpha1.TenantList{} },
 		"tenant",

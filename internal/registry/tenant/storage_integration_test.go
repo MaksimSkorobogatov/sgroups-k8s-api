@@ -26,9 +26,9 @@ func TestTenantStorageCreateList(t *testing.T) {
 	store := NewStorage(cli, registryoptions.StorageOptions{})
 
 	obj := &v1alpha1.Tenant{
-		ObjectMeta: metav1.ObjectMeta{Name: "default"},
+		ObjectMeta: metav1.ObjectMeta{Name: "acme"},
 		Spec: v1alpha1.TenantSpec{
-			DisplayName: "Default",
+			DisplayName: "Acme",
 		},
 	}
 
@@ -41,7 +41,7 @@ func TestTenantStorageCreateList(t *testing.T) {
 	if !ok {
 		t.Fatalf("unexpected type: %T", created)
 	}
-	if ns.Name != "default" {
+	if ns.Name != "acme" {
 		t.Fatalf("unexpected name: %q", ns.Name)
 	}
 	if ns.ResourceVersion == "" {

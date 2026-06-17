@@ -32,98 +32,108 @@ import (
 
 func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenAPIDefinition {
 	return map[string]common.OpenAPIDefinition{
-		resource.Quantity{}.OpenAPIModelName():            schema_apimachinery_pkg_api_resource_Quantity(ref),
-		v1.APIGroup{}.OpenAPIModelName():                  schema_pkg_apis_meta_v1_APIGroup(ref),
-		v1.APIGroupList{}.OpenAPIModelName():              schema_pkg_apis_meta_v1_APIGroupList(ref),
-		v1.APIResource{}.OpenAPIModelName():               schema_pkg_apis_meta_v1_APIResource(ref),
-		v1.APIResourceList{}.OpenAPIModelName():           schema_pkg_apis_meta_v1_APIResourceList(ref),
-		v1.APIVersions{}.OpenAPIModelName():               schema_pkg_apis_meta_v1_APIVersions(ref),
-		v1.ApplyOptions{}.OpenAPIModelName():              schema_pkg_apis_meta_v1_ApplyOptions(ref),
-		v1.Condition{}.OpenAPIModelName():                 schema_pkg_apis_meta_v1_Condition(ref),
-		v1.CreateOptions{}.OpenAPIModelName():             schema_pkg_apis_meta_v1_CreateOptions(ref),
-		v1.DeleteOptions{}.OpenAPIModelName():             schema_pkg_apis_meta_v1_DeleteOptions(ref),
-		v1.Duration{}.OpenAPIModelName():                  schema_pkg_apis_meta_v1_Duration(ref),
-		v1.FieldSelectorRequirement{}.OpenAPIModelName():  schema_pkg_apis_meta_v1_FieldSelectorRequirement(ref),
-		v1.FieldsV1{}.OpenAPIModelName():                  schema_pkg_apis_meta_v1_FieldsV1(ref),
-		v1.GetOptions{}.OpenAPIModelName():                schema_pkg_apis_meta_v1_GetOptions(ref),
-		v1.GroupKind{}.OpenAPIModelName():                 schema_pkg_apis_meta_v1_GroupKind(ref),
-		v1.GroupResource{}.OpenAPIModelName():             schema_pkg_apis_meta_v1_GroupResource(ref),
-		v1.GroupVersion{}.OpenAPIModelName():              schema_pkg_apis_meta_v1_GroupVersion(ref),
-		v1.GroupVersionForDiscovery{}.OpenAPIModelName():  schema_pkg_apis_meta_v1_GroupVersionForDiscovery(ref),
-		v1.GroupVersionKind{}.OpenAPIModelName():          schema_pkg_apis_meta_v1_GroupVersionKind(ref),
-		v1.GroupVersionResource{}.OpenAPIModelName():      schema_pkg_apis_meta_v1_GroupVersionResource(ref),
-		v1.InternalEvent{}.OpenAPIModelName():             schema_pkg_apis_meta_v1_InternalEvent(ref),
-		v1.LabelSelector{}.OpenAPIModelName():             schema_pkg_apis_meta_v1_LabelSelector(ref),
-		v1.LabelSelectorRequirement{}.OpenAPIModelName():  schema_pkg_apis_meta_v1_LabelSelectorRequirement(ref),
-		v1.List{}.OpenAPIModelName():                      schema_pkg_apis_meta_v1_List(ref),
-		v1.ListMeta{}.OpenAPIModelName():                  schema_pkg_apis_meta_v1_ListMeta(ref),
-		v1.ListOptions{}.OpenAPIModelName():               schema_pkg_apis_meta_v1_ListOptions(ref),
-		v1.ManagedFieldsEntry{}.OpenAPIModelName():        schema_pkg_apis_meta_v1_ManagedFieldsEntry(ref),
-		v1.MicroTime{}.OpenAPIModelName():                 schema_pkg_apis_meta_v1_MicroTime(ref),
-		v1.ObjectMeta{}.OpenAPIModelName():                schema_pkg_apis_meta_v1_ObjectMeta(ref),
-		v1.OwnerReference{}.OpenAPIModelName():            schema_pkg_apis_meta_v1_OwnerReference(ref),
-		v1.PartialObjectMetadata{}.OpenAPIModelName():     schema_pkg_apis_meta_v1_PartialObjectMetadata(ref),
-		v1.PartialObjectMetadataList{}.OpenAPIModelName(): schema_pkg_apis_meta_v1_PartialObjectMetadataList(ref),
-		v1.Patch{}.OpenAPIModelName():                     schema_pkg_apis_meta_v1_Patch(ref),
-		v1.PatchOptions{}.OpenAPIModelName():              schema_pkg_apis_meta_v1_PatchOptions(ref),
-		v1.Preconditions{}.OpenAPIModelName():             schema_pkg_apis_meta_v1_Preconditions(ref),
-		v1.RootPaths{}.OpenAPIModelName():                 schema_pkg_apis_meta_v1_RootPaths(ref),
-		v1.ServerAddressByClientCIDR{}.OpenAPIModelName(): schema_pkg_apis_meta_v1_ServerAddressByClientCIDR(ref),
-		v1.Status{}.OpenAPIModelName():                    schema_pkg_apis_meta_v1_Status(ref),
-		v1.StatusCause{}.OpenAPIModelName():               schema_pkg_apis_meta_v1_StatusCause(ref),
-		v1.StatusDetails{}.OpenAPIModelName():             schema_pkg_apis_meta_v1_StatusDetails(ref),
-		v1.Table{}.OpenAPIModelName():                     schema_pkg_apis_meta_v1_Table(ref),
-		v1.TableColumnDefinition{}.OpenAPIModelName():     schema_pkg_apis_meta_v1_TableColumnDefinition(ref),
-		v1.TableOptions{}.OpenAPIModelName():              schema_pkg_apis_meta_v1_TableOptions(ref),
-		v1.TableRow{}.OpenAPIModelName():                  schema_pkg_apis_meta_v1_TableRow(ref),
-		v1.TableRowCondition{}.OpenAPIModelName():         schema_pkg_apis_meta_v1_TableRowCondition(ref),
-		v1.Time{}.OpenAPIModelName():                      schema_pkg_apis_meta_v1_Time(ref),
-		v1.Timestamp{}.OpenAPIModelName():                 schema_pkg_apis_meta_v1_Timestamp(ref),
-		v1.TypeMeta{}.OpenAPIModelName():                  schema_pkg_apis_meta_v1_TypeMeta(ref),
-		v1.UpdateOptions{}.OpenAPIModelName():             schema_pkg_apis_meta_v1_UpdateOptions(ref),
-		v1.WatchEvent{}.OpenAPIModelName():                schema_pkg_apis_meta_v1_WatchEvent(ref),
-		runtime.RawExtension{}.OpenAPIModelName():         schema_k8sio_apimachinery_pkg_runtime_RawExtension(ref),
-		runtime.TypeMeta{}.OpenAPIModelName():             schema_k8sio_apimachinery_pkg_runtime_TypeMeta(ref),
-		runtime.Unknown{}.OpenAPIModelName():              schema_k8sio_apimachinery_pkg_runtime_Unknown(ref),
-		version.Info{}.OpenAPIModelName():                 schema_k8sio_apimachinery_pkg_version_Info(ref),
-		AddressGroup{}.OpenAPIModelName():                 schema_pkg_apis_sgroups_v1alpha1_AddressGroup(ref),
-		AddressGroupList{}.OpenAPIModelName():             schema_pkg_apis_sgroups_v1alpha1_AddressGroupList(ref),
-		AddressGroupSpec{}.OpenAPIModelName():             schema_pkg_apis_sgroups_v1alpha1_AddressGroupSpec(ref),
-		Host{}.OpenAPIModelName():                         schema_pkg_apis_sgroups_v1alpha1_Host(ref),
-		HostBinding{}.OpenAPIModelName():                  schema_pkg_apis_sgroups_v1alpha1_HostBinding(ref),
-		HostBindingList{}.OpenAPIModelName():              schema_pkg_apis_sgroups_v1alpha1_HostBindingList(ref),
-		HostBindingSpec{}.OpenAPIModelName():              schema_pkg_apis_sgroups_v1alpha1_HostBindingSpec(ref),
-		HostIPs{}.OpenAPIModelName():                      schema_pkg_apis_sgroups_v1alpha1_HostIPs(ref),
-		HostList{}.OpenAPIModelName():                     schema_pkg_apis_sgroups_v1alpha1_HostList(ref),
-		HostMetaInfo{}.OpenAPIModelName():                 schema_pkg_apis_sgroups_v1alpha1_HostMetaInfo(ref),
-		HostSpec{}.OpenAPIModelName():                     schema_pkg_apis_sgroups_v1alpha1_HostSpec(ref),
-		Network{}.OpenAPIModelName():                      schema_pkg_apis_sgroups_v1alpha1_Network(ref),
-		NetworkBinding{}.OpenAPIModelName():               schema_pkg_apis_sgroups_v1alpha1_NetworkBinding(ref),
-		NetworkBindingList{}.OpenAPIModelName():           schema_pkg_apis_sgroups_v1alpha1_NetworkBindingList(ref),
-		NetworkBindingSpec{}.OpenAPIModelName():           schema_pkg_apis_sgroups_v1alpha1_NetworkBindingSpec(ref),
-		NetworkList{}.OpenAPIModelName():                  schema_pkg_apis_sgroups_v1alpha1_NetworkList(ref),
-		NetworkSpec{}.OpenAPIModelName():                  schema_pkg_apis_sgroups_v1alpha1_NetworkSpec(ref),
-		ResourceIdentifier{}.OpenAPIModelName():           schema_pkg_apis_sgroups_v1alpha1_ResourceIdentifier(ref),
-		ResourceRef{}.OpenAPIModelName():                  schema_pkg_apis_sgroups_v1alpha1_ResourceRef(ref),
-		Rule{}.OpenAPIModelName():                         schema_pkg_apis_sgroups_v1alpha1_Rule(ref),
-		RuleEndpoint{}.OpenAPIModelName():                 schema_pkg_apis_sgroups_v1alpha1_RuleEndpoint(ref),
-		RuleEndpoints{}.OpenAPIModelName():                schema_pkg_apis_sgroups_v1alpha1_RuleEndpoints(ref),
-		RuleList{}.OpenAPIModelName():                     schema_pkg_apis_sgroups_v1alpha1_RuleList(ref),
-		RuleSession{}.OpenAPIModelName():                  schema_pkg_apis_sgroups_v1alpha1_RuleSession(ref),
-		RuleSpec{}.OpenAPIModelName():                     schema_pkg_apis_sgroups_v1alpha1_RuleSpec(ref),
-		RuleTransport{}.OpenAPIModelName():                schema_pkg_apis_sgroups_v1alpha1_RuleTransport(ref),
-		Service{}.OpenAPIModelName():                      schema_pkg_apis_sgroups_v1alpha1_Service(ref),
-		ServiceBinding{}.OpenAPIModelName():               schema_pkg_apis_sgroups_v1alpha1_ServiceBinding(ref),
-		ServiceBindingList{}.OpenAPIModelName():           schema_pkg_apis_sgroups_v1alpha1_ServiceBindingList(ref),
-		ServiceBindingSpec{}.OpenAPIModelName():           schema_pkg_apis_sgroups_v1alpha1_ServiceBindingSpec(ref),
-		ServiceList{}.OpenAPIModelName():                  schema_pkg_apis_sgroups_v1alpha1_ServiceList(ref),
-		ServiceSpec{}.OpenAPIModelName():                  schema_pkg_apis_sgroups_v1alpha1_ServiceSpec(ref),
-		ServiceTransport{}.OpenAPIModelName():             schema_pkg_apis_sgroups_v1alpha1_ServiceTransport(ref),
-		ServiceTransportEntry{}.OpenAPIModelName():        schema_pkg_apis_sgroups_v1alpha1_ServiceTransportEntry(ref),
-		Tenant{}.OpenAPIModelName():                       schema_pkg_apis_sgroups_v1alpha1_Tenant(ref),
-		TenantList{}.OpenAPIModelName():                   schema_pkg_apis_sgroups_v1alpha1_TenantList(ref),
-		TenantSpec{}.OpenAPIModelName():                   schema_pkg_apis_sgroups_v1alpha1_TenantSpec(ref),
-		TransportEntry{}.OpenAPIModelName():               schema_pkg_apis_sgroups_v1alpha1_TransportEntry(ref),
+		resource.Quantity{}.OpenAPIModelName():                            schema_apimachinery_pkg_api_resource_Quantity(ref),
+		v1.APIGroup{}.OpenAPIModelName():                                  schema_pkg_apis_meta_v1_APIGroup(ref),
+		v1.APIGroupList{}.OpenAPIModelName():                              schema_pkg_apis_meta_v1_APIGroupList(ref),
+		v1.APIResource{}.OpenAPIModelName():                               schema_pkg_apis_meta_v1_APIResource(ref),
+		v1.APIResourceList{}.OpenAPIModelName():                           schema_pkg_apis_meta_v1_APIResourceList(ref),
+		v1.APIVersions{}.OpenAPIModelName():                               schema_pkg_apis_meta_v1_APIVersions(ref),
+		v1.ApplyOptions{}.OpenAPIModelName():                              schema_pkg_apis_meta_v1_ApplyOptions(ref),
+		v1.Condition{}.OpenAPIModelName():                                 schema_pkg_apis_meta_v1_Condition(ref),
+		v1.CreateOptions{}.OpenAPIModelName():                             schema_pkg_apis_meta_v1_CreateOptions(ref),
+		v1.DeleteOptions{}.OpenAPIModelName():                             schema_pkg_apis_meta_v1_DeleteOptions(ref),
+		v1.Duration{}.OpenAPIModelName():                                  schema_pkg_apis_meta_v1_Duration(ref),
+		v1.FieldSelectorRequirement{}.OpenAPIModelName():                  schema_pkg_apis_meta_v1_FieldSelectorRequirement(ref),
+		v1.FieldsV1{}.OpenAPIModelName():                                  schema_pkg_apis_meta_v1_FieldsV1(ref),
+		v1.GetOptions{}.OpenAPIModelName():                                schema_pkg_apis_meta_v1_GetOptions(ref),
+		v1.GroupKind{}.OpenAPIModelName():                                 schema_pkg_apis_meta_v1_GroupKind(ref),
+		v1.GroupResource{}.OpenAPIModelName():                             schema_pkg_apis_meta_v1_GroupResource(ref),
+		v1.GroupVersion{}.OpenAPIModelName():                              schema_pkg_apis_meta_v1_GroupVersion(ref),
+		v1.GroupVersionForDiscovery{}.OpenAPIModelName():                  schema_pkg_apis_meta_v1_GroupVersionForDiscovery(ref),
+		v1.GroupVersionKind{}.OpenAPIModelName():                          schema_pkg_apis_meta_v1_GroupVersionKind(ref),
+		v1.GroupVersionResource{}.OpenAPIModelName():                      schema_pkg_apis_meta_v1_GroupVersionResource(ref),
+		v1.InternalEvent{}.OpenAPIModelName():                             schema_pkg_apis_meta_v1_InternalEvent(ref),
+		v1.LabelSelector{}.OpenAPIModelName():                             schema_pkg_apis_meta_v1_LabelSelector(ref),
+		v1.LabelSelectorRequirement{}.OpenAPIModelName():                  schema_pkg_apis_meta_v1_LabelSelectorRequirement(ref),
+		v1.List{}.OpenAPIModelName():                                      schema_pkg_apis_meta_v1_List(ref),
+		v1.ListMeta{}.OpenAPIModelName():                                  schema_pkg_apis_meta_v1_ListMeta(ref),
+		v1.ListOptions{}.OpenAPIModelName():                               schema_pkg_apis_meta_v1_ListOptions(ref),
+		v1.ManagedFieldsEntry{}.OpenAPIModelName():                        schema_pkg_apis_meta_v1_ManagedFieldsEntry(ref),
+		v1.MicroTime{}.OpenAPIModelName():                                 schema_pkg_apis_meta_v1_MicroTime(ref),
+		v1.ObjectMeta{}.OpenAPIModelName():                                schema_pkg_apis_meta_v1_ObjectMeta(ref),
+		v1.OwnerReference{}.OpenAPIModelName():                            schema_pkg_apis_meta_v1_OwnerReference(ref),
+		v1.PartialObjectMetadata{}.OpenAPIModelName():                     schema_pkg_apis_meta_v1_PartialObjectMetadata(ref),
+		v1.PartialObjectMetadataList{}.OpenAPIModelName():                 schema_pkg_apis_meta_v1_PartialObjectMetadataList(ref),
+		v1.Patch{}.OpenAPIModelName():                                     schema_pkg_apis_meta_v1_Patch(ref),
+		v1.PatchOptions{}.OpenAPIModelName():                              schema_pkg_apis_meta_v1_PatchOptions(ref),
+		v1.Preconditions{}.OpenAPIModelName():                             schema_pkg_apis_meta_v1_Preconditions(ref),
+		v1.RootPaths{}.OpenAPIModelName():                                 schema_pkg_apis_meta_v1_RootPaths(ref),
+		v1.ServerAddressByClientCIDR{}.OpenAPIModelName():                 schema_pkg_apis_meta_v1_ServerAddressByClientCIDR(ref),
+		v1.Status{}.OpenAPIModelName():                                    schema_pkg_apis_meta_v1_Status(ref),
+		v1.StatusCause{}.OpenAPIModelName():                               schema_pkg_apis_meta_v1_StatusCause(ref),
+		v1.StatusDetails{}.OpenAPIModelName():                             schema_pkg_apis_meta_v1_StatusDetails(ref),
+		v1.Table{}.OpenAPIModelName():                                     schema_pkg_apis_meta_v1_Table(ref),
+		v1.TableColumnDefinition{}.OpenAPIModelName():                     schema_pkg_apis_meta_v1_TableColumnDefinition(ref),
+		v1.TableOptions{}.OpenAPIModelName():                              schema_pkg_apis_meta_v1_TableOptions(ref),
+		v1.TableRow{}.OpenAPIModelName():                                  schema_pkg_apis_meta_v1_TableRow(ref),
+		v1.TableRowCondition{}.OpenAPIModelName():                         schema_pkg_apis_meta_v1_TableRowCondition(ref),
+		v1.Time{}.OpenAPIModelName():                                      schema_pkg_apis_meta_v1_Time(ref),
+		v1.Timestamp{}.OpenAPIModelName():                                 schema_pkg_apis_meta_v1_Timestamp(ref),
+		v1.TypeMeta{}.OpenAPIModelName():                                  schema_pkg_apis_meta_v1_TypeMeta(ref),
+		v1.UpdateOptions{}.OpenAPIModelName():                             schema_pkg_apis_meta_v1_UpdateOptions(ref),
+		v1.WatchEvent{}.OpenAPIModelName():                                schema_pkg_apis_meta_v1_WatchEvent(ref),
+		runtime.RawExtension{}.OpenAPIModelName():                         schema_k8sio_apimachinery_pkg_runtime_RawExtension(ref),
+		runtime.TypeMeta{}.OpenAPIModelName():                             schema_k8sio_apimachinery_pkg_runtime_TypeMeta(ref),
+		runtime.Unknown{}.OpenAPIModelName():                              schema_k8sio_apimachinery_pkg_runtime_Unknown(ref),
+		version.Info{}.OpenAPIModelName():                                 schema_k8sio_apimachinery_pkg_version_Info(ref),
+		AddressGroup{}.OpenAPIModelName():                                 schema_pkg_apis_sgroups_v1alpha1_AddressGroup(ref),
+		AddressGroupList{}.OpenAPIModelName():                             schema_pkg_apis_sgroups_v1alpha1_AddressGroupList(ref),
+		AddressGroupSpec{}.OpenAPIModelName():                             schema_pkg_apis_sgroups_v1alpha1_AddressGroupSpec(ref),
+		Host{}.OpenAPIModelName():                                         schema_pkg_apis_sgroups_v1alpha1_Host(ref),
+		HostBinding{}.OpenAPIModelName():                                  schema_pkg_apis_sgroups_v1alpha1_HostBinding(ref),
+		HostBindingList{}.OpenAPIModelName():                              schema_pkg_apis_sgroups_v1alpha1_HostBindingList(ref),
+		HostBindingSpec{}.OpenAPIModelName():                              schema_pkg_apis_sgroups_v1alpha1_HostBindingSpec(ref),
+		HostEndpointPort{}.OpenAPIModelName():                             schema_pkg_apis_sgroups_v1alpha1_HostEndpointPort(ref),
+		HostEndpoints{}.OpenAPIModelName():                                schema_pkg_apis_sgroups_v1alpha1_HostEndpoints(ref),
+		HostIPs{}.OpenAPIModelName():                                      schema_pkg_apis_sgroups_v1alpha1_HostIPs(ref),
+		HostList{}.OpenAPIModelName():                                     schema_pkg_apis_sgroups_v1alpha1_HostList(ref),
+		HostMetaInfo{}.OpenAPIModelName():                                 schema_pkg_apis_sgroups_v1alpha1_HostMetaInfo(ref),
+		HostSpec{}.OpenAPIModelName():                                     schema_pkg_apis_sgroups_v1alpha1_HostSpec(ref),
+		Network{}.OpenAPIModelName():                                      schema_pkg_apis_sgroups_v1alpha1_Network(ref),
+		NetworkBinding{}.OpenAPIModelName():                               schema_pkg_apis_sgroups_v1alpha1_NetworkBinding(ref),
+		NetworkBindingList{}.OpenAPIModelName():                           schema_pkg_apis_sgroups_v1alpha1_NetworkBindingList(ref),
+		NetworkBindingSpec{}.OpenAPIModelName():                           schema_pkg_apis_sgroups_v1alpha1_NetworkBindingSpec(ref),
+		NetworkList{}.OpenAPIModelName():                                  schema_pkg_apis_sgroups_v1alpha1_NetworkList(ref),
+		NetworkSpec{}.OpenAPIModelName():                                  schema_pkg_apis_sgroups_v1alpha1_NetworkSpec(ref),
+		Nft{}.OpenAPIModelName():                                          schema_pkg_apis_sgroups_v1alpha1_Nft(ref),
+		NftList{}.OpenAPIModelName():                                      schema_pkg_apis_sgroups_v1alpha1_NftList(ref),
+		"sgroups.io/sgroups-k8s-api/pkg/apis/sgroups/v1alpha1.NftOptions": schema_pkg_apis_sgroups_v1alpha1_NftOptions(ref),
+		Process{}.OpenAPIModelName():                                      schema_pkg_apis_sgroups_v1alpha1_Process(ref),
+		ResourceIdentifier{}.OpenAPIModelName():                           schema_pkg_apis_sgroups_v1alpha1_ResourceIdentifier(ref),
+		ResourceRef{}.OpenAPIModelName():                                  schema_pkg_apis_sgroups_v1alpha1_ResourceRef(ref),
+		Rule{}.OpenAPIModelName():                                         schema_pkg_apis_sgroups_v1alpha1_Rule(ref),
+		RuleEndpoint{}.OpenAPIModelName():                                 schema_pkg_apis_sgroups_v1alpha1_RuleEndpoint(ref),
+		RuleEndpoints{}.OpenAPIModelName():                                schema_pkg_apis_sgroups_v1alpha1_RuleEndpoints(ref),
+		RuleList{}.OpenAPIModelName():                                     schema_pkg_apis_sgroups_v1alpha1_RuleList(ref),
+		RuleSession{}.OpenAPIModelName():                                  schema_pkg_apis_sgroups_v1alpha1_RuleSession(ref),
+		RuleSpec{}.OpenAPIModelName():                                     schema_pkg_apis_sgroups_v1alpha1_RuleSpec(ref),
+		RuleTransport{}.OpenAPIModelName():                                schema_pkg_apis_sgroups_v1alpha1_RuleTransport(ref),
+		Service{}.OpenAPIModelName():                                      schema_pkg_apis_sgroups_v1alpha1_Service(ref),
+		ServiceBinding{}.OpenAPIModelName():                               schema_pkg_apis_sgroups_v1alpha1_ServiceBinding(ref),
+		ServiceBindingList{}.OpenAPIModelName():                           schema_pkg_apis_sgroups_v1alpha1_ServiceBindingList(ref),
+		ServiceBindingSpec{}.OpenAPIModelName():                           schema_pkg_apis_sgroups_v1alpha1_ServiceBindingSpec(ref),
+		ServiceList{}.OpenAPIModelName():                                  schema_pkg_apis_sgroups_v1alpha1_ServiceList(ref),
+		ServiceSpec{}.OpenAPIModelName():                                  schema_pkg_apis_sgroups_v1alpha1_ServiceSpec(ref),
+		ServiceTransport{}.OpenAPIModelName():                             schema_pkg_apis_sgroups_v1alpha1_ServiceTransport(ref),
+		ServiceTransportEntry{}.OpenAPIModelName():                        schema_pkg_apis_sgroups_v1alpha1_ServiceTransportEntry(ref),
+		SocketStat{}.OpenAPIModelName():                                   schema_pkg_apis_sgroups_v1alpha1_SocketStat(ref),
+		SocketStatList{}.OpenAPIModelName():                               schema_pkg_apis_sgroups_v1alpha1_SocketStatList(ref),
+		SocketStatOptions{}.OpenAPIModelName():                            schema_pkg_apis_sgroups_v1alpha1_SocketStatOptions(ref),
+		SocketStatSelector{}.OpenAPIModelName():                           schema_pkg_apis_sgroups_v1alpha1_SocketStatSelector(ref),
+		Tenant{}.OpenAPIModelName():                                       schema_pkg_apis_sgroups_v1alpha1_Tenant(ref),
+		TenantList{}.OpenAPIModelName():                                   schema_pkg_apis_sgroups_v1alpha1_TenantList(ref),
+		TenantSpec{}.OpenAPIModelName():                                   schema_pkg_apis_sgroups_v1alpha1_TenantSpec(ref),
+		TransportEntry{}.OpenAPIModelName():                               schema_pkg_apis_sgroups_v1alpha1_TransportEntry(ref),
 	}
 }
 
@@ -3003,11 +3013,17 @@ func schema_pkg_apis_sgroups_v1alpha1_Host(ref common.ReferenceCallback) common.
 							Ref:     ref(HostMetaInfo{}.OpenAPIModelName()),
 						},
 					},
+					"endpoints": {
+						SchemaProps: spec.SchemaProps{
+							Default: map[string]interface{}{},
+							Ref:     ref(HostEndpoints{}.OpenAPIModelName()),
+						},
+					},
 				},
 			},
 		},
 		Dependencies: []string{
-			v1.ObjectMeta{}.OpenAPIModelName(), HostIPs{}.OpenAPIModelName(), HostMetaInfo{}.OpenAPIModelName(), HostSpec{}.OpenAPIModelName(), ResourceRef{}.OpenAPIModelName()},
+			v1.ObjectMeta{}.OpenAPIModelName(), HostEndpoints{}.OpenAPIModelName(), HostIPs{}.OpenAPIModelName(), HostMetaInfo{}.OpenAPIModelName(), HostSpec{}.OpenAPIModelName(), ResourceRef{}.OpenAPIModelName()},
 	}
 }
 
@@ -3143,6 +3159,70 @@ func schema_pkg_apis_sgroups_v1alpha1_HostBindingSpec(ref common.ReferenceCallba
 		},
 		Dependencies: []string{
 			ResourceIdentifier{}.OpenAPIModelName()},
+	}
+}
+
+func schema_pkg_apis_sgroups_v1alpha1_HostEndpointPort(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "HostEndpointPort is a named port exposed by a Host endpoint (read-only).",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Default: "",
+							Type:    []string{"string"},
+							Format:  "",
+						},
+					},
+					"port": {
+						SchemaProps: spec.SchemaProps{
+							Default: 0,
+							Type:    []string{"integer"},
+							Format:  "int64",
+						},
+					},
+				},
+				Required: []string{"name", "port"},
+			},
+		},
+	}
+}
+
+func schema_pkg_apis_sgroups_v1alpha1_HostEndpoints(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "HostEndpoints describes endpoints published by a Host (read-only). If Address is empty, the backend falls back to the peer address observed on the gRPC connection from the host agent.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"address": {
+						SchemaProps: spec.SchemaProps{
+							Default: "",
+							Type:    []string{"string"},
+							Format:  "",
+						},
+					},
+					"ports": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(HostEndpointPort{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"address", "ports"},
+			},
+		},
+		Dependencies: []string{
+			HostEndpointPort{}.OpenAPIModelName()},
 	}
 }
 
@@ -3594,6 +3674,153 @@ func schema_pkg_apis_sgroups_v1alpha1_NetworkSpec(ref common.ReferenceCallback) 
 						},
 					},
 				},
+			},
+		},
+	}
+}
+
+func schema_pkg_apis_sgroups_v1alpha1_Nft(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "Nft is one host's nftables ruleset, as reported by the host-agent.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"text": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Text is the `nft list ruleset` output.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"json": {
+						SchemaProps: spec.SchemaProps{
+							Description: "JSON is the `nft -j` ruleset as structured JSON; pointer so it omits (not \"json\": null) when no parseable JSON is returned.",
+							Ref:         ref(runtime.RawExtension{}.OpenAPIModelName()),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			runtime.RawExtension{}.OpenAPIModelName()},
+	}
+}
+
+func schema_pkg_apis_sgroups_v1alpha1_NftList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "NftList is the hosts/nft list response (and per-event watch payload).",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Default: map[string]interface{}{},
+							Ref:     ref(v1.ListMeta{}.OpenAPIModelName()),
+						},
+					},
+					"host": {
+						SchemaProps: spec.SchemaProps{
+							Default: map[string]interface{}{},
+							Ref:     ref(ResourceIdentifier{}.OpenAPIModelName()),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(Nft{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"items"},
+			},
+		},
+		Dependencies: []string{
+			v1.ListMeta{}.OpenAPIModelName(), Nft{}.OpenAPIModelName(), ResourceIdentifier{}.OpenAPIModelName()},
+	}
+}
+
+func schema_pkg_apis_sgroups_v1alpha1_NftOptions(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "NftOptions is the hosts/nft query payload; Watch is the only knob (no selectors).",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"watch": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"boolean"},
+							Format: "",
+						},
+					},
+				},
+			},
+		},
+	}
+}
+
+func schema_pkg_apis_sgroups_v1alpha1_Process(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "Process represents a kernel-reported process that owns a socket.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"pid": {
+						SchemaProps: spec.SchemaProps{
+							Default: 0,
+							Type:    []string{"integer"},
+							Format:  "int32",
+						},
+					},
+					"comm": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"cmdLine": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"exe": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"fd": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+				},
+				Required: []string{"pid"},
 			},
 		},
 	}
@@ -4296,6 +4523,272 @@ func schema_pkg_apis_sgroups_v1alpha1_ServiceTransportEntry(ref common.Reference
 									},
 								},
 							},
+						},
+					},
+				},
+			},
+		},
+	}
+}
+
+func schema_pkg_apis_sgroups_v1alpha1_SocketStat(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "SocketStat is a single socket-statistics entry returned by a host-agent.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"protocol": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"family": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"state": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"localAddr": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"localPort": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"remoteAddr": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"remotePort": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"ifname": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"inode": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int64",
+						},
+					},
+					"processes": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(Process{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			Process{}.OpenAPIModelName()},
+	}
+}
+
+func schema_pkg_apis_sgroups_v1alpha1_SocketStatList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "SocketStatList is the list response for the sockstats subresource. Also used as the per-event payload for watch (one event = batch of stats).",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Default: map[string]interface{}{},
+							Ref:     ref(v1.ListMeta{}.OpenAPIModelName()),
+						},
+					},
+					"host": {
+						SchemaProps: spec.SchemaProps{
+							Default: map[string]interface{}{},
+							Ref:     ref(ResourceIdentifier{}.OpenAPIModelName()),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(SocketStat{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"items"},
+			},
+		},
+		Dependencies: []string{
+			v1.ListMeta{}.OpenAPIModelName(), ResourceIdentifier{}.OpenAPIModelName(), SocketStat{}.OpenAPIModelName()},
+	}
+}
+
+func schema_pkg_apis_sgroups_v1alpha1_SocketStatOptions(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "SocketStatOptions is the body/query payload for the sockstats subresource. Watch toggles between list and watch behavior — same URL pattern as Pod log.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"watch": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Watch turns the request into a stream of SocketStatList chunks.",
+							Type:        []string{"boolean"},
+							Format:      "",
+						},
+					},
+					"selectors": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Selectors are OR-joined filters; empty means \"all\".",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(SocketStatSelector{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			SocketStatSelector{}.OpenAPIModelName()},
+	}
+}
+
+func schema_pkg_apis_sgroups_v1alpha1_SocketStatSelector(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "SocketStatSelector is a single-statistic filter accepted by the subresource. Empty fields are wildcards. Multiple selectors in a request are OR-joined.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"protocol": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"family": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"state": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"localAddr": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"localPort": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"remoteAddr": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"remotePort": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"ifname": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"inode": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int64",
+						},
+					},
+					"pid": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+					"comm": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
 						},
 					},
 				},

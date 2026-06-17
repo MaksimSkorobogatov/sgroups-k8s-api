@@ -13,6 +13,7 @@ resources:
   - deployment.yaml
   - mock-backend.yaml    # remove when switching to the real backend
   - apiservice.yaml
+  - controller
 
 configMapGenerator:
   - name: sgroups-apiserver-config
