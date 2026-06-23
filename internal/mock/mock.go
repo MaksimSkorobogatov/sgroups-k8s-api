@@ -614,6 +614,26 @@ func (m *MockBackend) WatchNft(ctx context.Context, req *sgroupsv1.HostReq_Nft_W
 	}, nil
 }
 
+func (m *MockBackend) UpdHealthStatus(_ context.Context, req *sgroupsv1.HostReq_UpdHealthStatus) (*sgroupsv1.HostResp_UpdHealthStatus, error) {
+	m.mu.Lock()
+	defer m.mu.Unlock()
+
+	out := make([]*sgroupsv1.Host, 0, len(req.GetHosts()))
+	for _, h := range req.GetHosts() {
+		key := h.GetMetadata().GetNamespace() + "/" + h.GetMetadata().GetName()
+		existing, ok := m.hosts[key]
+		if !ok {
+			continue
+		}
+		if existing.Spec == nil {
+			existing.Spec = &sgroupsv1.Host_Spec{}
+		}
+		existing.Spec.Healthy = h.GetSpec().GetHealthy()
+		out = append(out, proto.Clone(existing).(*sgroupsv1.Host))
+	}
+	return &sgroupsv1.HostResp_UpdHealthStatus{Hosts: out}, nil
+}
+
 // fabricatedNftHosts builds a Host-wrapped ruleset per selector. Selectors
 // pointing at unknown hosts are silently dropped (matching how the real
 // backend handles fan-out to an unreachable agent).

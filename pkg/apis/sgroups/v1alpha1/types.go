@@ -59,6 +59,9 @@ const (
 
 	// SubresourceHostNft is the subresource name for hosts/nft.
 	SubresourceHostNft = "nft"
+
+	// SubresourceHostStatus is the subresource name for hosts/status.
+	SubresourceHostStatus = "status"
 )
 
 // Action represents the default action for an AddressGroup.
@@ -205,6 +208,7 @@ type Host struct {
 	IPs               HostIPs       `json:"ips,omitempty"`
 	MetaInfo          HostMetaInfo  `json:"metaInfo,omitempty"`
 	Endpoints         HostEndpoints `json:"endpoints,omitempty"`
+	Healthy           bool          `json:"healthy,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -459,6 +459,17 @@ func (s *MockHostServer) WatchNft(req *sgroupsv1.HostReq_Nft_Watch, stream grpc.
 	}
 }
 
+func (s *MockHostServer) UpdHealthStatus(ctx context.Context, req *sgroupsv1.HostReq_UpdHealthStatus) (*sgroupsv1.HostResp_UpdHealthStatus, error) {
+	if s.backend == nil {
+		return nil, status.Error(codes.Unavailable, "host backend is not configured")
+	}
+	if req == nil || len(req.Hosts) == 0 {
+		return nil, status.Error(codes.InvalidArgument, "hosts are required")
+	}
+
+	return s.backend.UpdHealthStatus(ctx, req)
+}
+
 func (s *MockHostBindingServer) Upsert(ctx context.Context, req *sgroupsv1.HostBindingReq_Upsert) (*sgroupsv1.HostBindingResp_Upsert, error) {
 	if s.backend == nil {
 		return nil, status.Error(codes.Unavailable, "host binding backend is not configured")

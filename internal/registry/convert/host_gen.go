@@ -42,6 +42,7 @@ func HostFromProto(in *sgroupsv1.Host) *v1alpha1.Host {
 		IPs:       hostIPsFromProto(in.GetSpec().GetIps()),
 		MetaInfo:  hostMetaInfoFromProto(in.GetSpec().GetMetaInfo()),
 		Endpoints: hostEndpointsFromProto(in.GetSpec().GetEndpoints()),
+		Healthy:   in.GetSpec().GetHealthy(),
 	}
 	objectMetaFromProto(&out.ObjectMeta, in.GetMetadata())
 
@@ -67,6 +68,7 @@ func HostFromProtoExt(in *sgroupsv1.HostResp_HostExt) *v1alpha1.Host {
 		IPs:       hostIPsFromProto(in.GetSpec().GetIps()),
 		MetaInfo:  hostMetaInfoFromProto(in.GetSpec().GetMetaInfo()),
 		Endpoints: hostEndpointsFromProto(in.GetSpec().GetEndpoints()),
+		Healthy:   in.GetSpec().GetHealthy(),
 	}
 	objectMetaFromProto(&out.ObjectMeta, in.GetMetadata())
 
