@@ -1105,6 +1105,53 @@
         }
       ]
     },
+    "/apis/sgroups.io/v1alpha1/namespaces/{namespace}/hosts/{name}/bootstrap-token": {
+      "post": {
+        "tags": [
+          "sgroups_host"
+        ],
+        "summary": "Issue a bootstrap token for a Host",
+        "description": "Mints a short-lived bootstrap JWT scoped to the host; the host-agent uses it to exchange a CSR for a client certificate.",
+        "operationId": "createHostBootstrapToken",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.BootstrapToken"
+                }
+              },
+              "application/yaml": {
+                "schema": {
+                  "$ref": "#/components/schemas/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.BootstrapToken"
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "namespace",
+          "in": "path",
+          "description": "Namespace of the Host.",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "name",
+          "in": "path",
+          "description": "Name of the Host.",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ]
+    },
     "/apis/sgroups.io/v1alpha1/namespaces/{namespace}/hosts/{name}/nft": {
       "get": {
         "tags": [
@@ -3791,6 +3838,24 @@
           "displayName": "Web Servers",
           "logs": true,
           "trace": false
+        }
+      },
+      "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.BootstrapToken": {
+        "description": "BootstrapToken is the hosts/bootstrap-token response: a short-lived enrollment JWT for the host.",
+        "type": "object",
+        "properties": {
+          "apiVersion": {
+            "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+            "type": "string"
+          },
+          "kind": {
+            "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+            "type": "string"
+          },
+          "token": {
+            "description": "Token is the signed bootstrap JWT.",
+            "type": "string"
+          }
         }
       },
       "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Host": {

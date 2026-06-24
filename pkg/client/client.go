@@ -17,6 +17,7 @@ type Client struct {
 	Services        sgroupsv1.SGroupsServicesAPIClient
 	ServiceBindings sgroupsv1.SGroupsServiceBindingAPIClient
 	Rules           sgroupsv1.SGroupsRulesAPIClient
+	Authn           sgroupsv1.SGroupsAuthnAPIClient
 }
 
 func Dial(addr string, opts ...grpc.DialOption) (*Client, error) {
@@ -28,7 +29,10 @@ func Dial(addr string, opts ...grpc.DialOption) (*Client, error) {
 		return nil, err
 	}
 
-	return newClient(conn), nil
+	c := newClient(conn)
+	c.Authn = sgroupsv1.NewSGroupsAuthnAPIClient(conn)
+
+	return c, nil
 }
 
 func (c *Client) Close() error {

@@ -937,6 +937,48 @@
         }
       ]
     },
+    "/apis/sgroups.io/v1alpha1/namespaces/{namespace}/hosts/{name}/bootstrap-token": {
+      "post": {
+        "description": "Mints a short-lived bootstrap JWT scoped to the host; the host-agent uses it to exchange a CSR for a client certificate.",
+        "consumes": [
+          "application/json",
+          "application/yaml"
+        ],
+        "produces": [
+          "application/json",
+          "application/yaml"
+        ],
+        "tags": [
+          "sgroups_host"
+        ],
+        "summary": "Issue a bootstrap token for a Host",
+        "operationId": "createHostBootstrapToken",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.BootstrapToken"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "description": "Namespace of the Host.",
+          "name": "namespace",
+          "in": "path",
+          "required": true
+        },
+        {
+          "type": "string",
+          "description": "Name of the Host.",
+          "name": "name",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
     "/apis/sgroups.io/v1alpha1/namespaces/{namespace}/hosts/{name}/nft": {
       "get": {
         "description": "Reads the nftables ruleset aggregated from the host-agent, in both text and structured-JSON form. With ?watch=true the response is a stream.",
@@ -3265,6 +3307,24 @@
         "displayName": "Web Servers",
         "logs": true,
         "trace": false
+      }
+    },
+    "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.BootstrapToken": {
+      "description": "BootstrapToken is the hosts/bootstrap-token response: a short-lived enrollment JWT for the host.",
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "token": {
+          "description": "Token is the signed bootstrap JWT.",
+          "type": "string"
+        }
       }
     },
     "sgroups.io.sgroups-k8s-api.pkg.apis.sgroups.v1alpha1.Host": {
