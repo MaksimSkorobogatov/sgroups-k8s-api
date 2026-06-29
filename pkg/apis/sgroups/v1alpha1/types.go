@@ -26,6 +26,8 @@ const (
 	KindNft     = "Nft"
 	KindNftList = "NftList"
 
+	KindBootstrapToken = "BootstrapToken"
+
 	KindHostBinding     = "HostBinding"
 	KindHostBindingList = "HostBindingList"
 
@@ -59,6 +61,9 @@ const (
 
 	// SubresourceHostNft is the subresource name for hosts/nft.
 	SubresourceHostNft = "nft"
+
+	// SubresourceHostBootstrapToken is the subresource name for hosts/bootstrap-token.
+	SubresourceHostBootstrapToken = "bootstrap-token"
 
 	// SubresourceHostStatus is the subresource name for hosts/status.
 	SubresourceHostStatus = "status"
@@ -535,6 +540,14 @@ type NftList struct {
 	Items           []Nft              `json:"items"`
 }
 
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// BootstrapToken is the hosts/bootstrap-token response: a short-lived enrollment JWT for the host.
+type BootstrapToken struct {
+	metav1.TypeMeta `json:",inline"`
+	// Token is the signed bootstrap JWT.
+	Token string `json:"token,omitempty"`
+}
+
 // ---------- OpenAPIModelName ----------
 // The Kubernetes DefinitionNamer converts Go import paths (slashes) to
 // dot-separated names. Types must implement OpenAPIModelName to match,
@@ -594,3 +607,4 @@ func (SocketStatSelector) OpenAPIModelName() string { return OpenAPIPrefix + "So
 func (Process) OpenAPIModelName() string            { return OpenAPIPrefix + "Process" }
 func (Nft) OpenAPIModelName() string                { return OpenAPIPrefix + "Nft" }
 func (NftList) OpenAPIModelName() string            { return OpenAPIPrefix + "NftList" }
+func (BootstrapToken) OpenAPIModelName() string     { return OpenAPIPrefix + "BootstrapToken" }

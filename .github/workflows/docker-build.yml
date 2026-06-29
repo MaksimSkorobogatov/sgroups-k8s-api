@@ -17,14 +17,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Checkout sgroups-proto at go.mod commit
+      - name: Checkout sgroups-proto at go.mod version
         run: |
-          # Go pseudo-version format: v0.0.0-YYYYMMDDHHMMSS-<commit12>
+          # The go.mod require may be either a Go pseudo-version
+          # (v0.0.0-YYYYMMDDHHMMSS-<commit12>) or a real tag (e.g. v0.3.1-rc1).
           PROTO_VERSION=$(grep 'github.com/PRO-Robotech/sgroups-proto' go.mod | grep -v replace | awk '{print $2}')
-          PROTO_COMMIT=$(echo "$PROTO_VERSION" | sed 's/.*-//')
+          if echo "$PROTO_VERSION" | grep -qE '[0-9]{14}-[0-9a-f]{12}$'; then
+            PROTO_REF=$(echo "$PROTO_VERSION" | sed 's/.*-//')   # pseudo-version -> commit hash
+          else
+            PROTO_REF="$PROTO_VERSION"                            # tagged version -> tag
+          fi
           git clone https://github.com/PRO-Robotech/sgroups-proto.git sgroups-proto
           cd sgroups-proto
-          git checkout "$PROTO_COMMIT"
+          git checkout "$PROTO_REF"
 
       - uses: benjlevesque/short-sha@v3.0
         id: short-sha

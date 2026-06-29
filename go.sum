@@ -2,8 +2,8 @@ buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.36.11-202512091757
 buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.36.11-20251209175733-2a1774d88802.1/go.mod h1:tvtbpgaVXZX4g6Pn+AnzFycuRK3MOz5HJfEGeEllXYM=
 cel.dev/expr v0.24.0 h1:56OvJKSH3hDGL0ml5uSxZmz3/3Pq4tJ+fb1unVLAFcY=
 cel.dev/expr v0.24.0/go.mod h1:hLPLo1W4QUmuYdA72RBX06QTs6MXw941piREPl3Yfiw=
-github.com/MaksimSkorobogatov/sgroups-proto v0.4.1 h1:vIk3aIDi6lqUM8s6507aJApi4pdJXUtKpdpfHwFVFFQ=
-github.com/MaksimSkorobogatov/sgroups-proto v0.4.1/go.mod h1:1XBRmQiRvPbzmD1flXFhiwGywqQ+5B3bR5cZEp8m7jg=
+github.com/MaksimSkorobogatov/sgroups-proto v0.4.2 h1:ZzRb/pImlhy47WZbkHIGovGhCOE+5oHKxd7O39iuHt0=
+github.com/MaksimSkorobogatov/sgroups-proto v0.4.2/go.mod h1:1XBRmQiRvPbzmD1flXFhiwGywqQ+5B3bR5cZEp8m7jg=
 github.com/Masterminds/semver/v3 v3.4.0 h1:Zog+i5UMtVoCU8oKka5P7i9q9HgrJeGzI9SA1Xbatp0=
 github.com/Masterminds/semver/v3 v3.4.0/go.mod h1:4V+yj/TJE1HU9XfppCwVMZq3I84lprf4nC11bSS5beM=
 github.com/NYTimes/gziphandler v1.1.1 h1:ZUDjpQae29j0ryrS0u/B8HZfJBtBQHjqw2rQ2cqUQ3I=

@@ -3,7 +3,7 @@ module sgroups.io/sgroups-k8s-api
 go 1.25.0
 
 require (
-	github.com/PRO-Robotech/sgroups-proto v0.2.0
+	github.com/PRO-Robotech/sgroups-proto v0.3.1-rc1
 	github.com/google/uuid v1.6.0
 	github.com/spf13/pflag v1.0.10
 	github.com/stretchr/testify v1.11.1
@@ -115,4 +115,4 @@ require (
 )
 
 // TODO: remove before merge
-replace github.com/PRO-Robotech/sgroups-proto v0.2.0 => github.com/MaksimSkorobogatov/sgroups-proto v0.4.1
+replace github.com/PRO-Robotech/sgroups-proto v0.3.1-rc1 => github.com/MaksimSkorobogatov/sgroups-proto v0.4.2

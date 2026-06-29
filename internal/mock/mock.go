@@ -629,8 +629,13 @@ func (m *MockBackend) UpdHealthStatus(_ context.Context, req *sgroupsv1.HostReq_
 			existing.Spec = &sgroupsv1.Host_Spec{}
 		}
 		existing.Spec.Healthy = h.GetSpec().GetHealthy()
-		out = append(out, proto.Clone(existing).(*sgroupsv1.Host))
+		_host := proto.Clone(existing)
+		host, ok := _host.(*sgroupsv1.Host)
+		if ok {
+			out = append(out, host)
+		}
 	}
+
 	return &sgroupsv1.HostResp_UpdHealthStatus{Hosts: out}, nil
 }
 

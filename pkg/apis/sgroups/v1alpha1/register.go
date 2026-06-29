@@ -48,6 +48,7 @@ func subresourceKnownTypes() []runtime.Object {
 	return []runtime.Object{
 		&SocketStatList{},
 		&NftList{},
+		&BootstrapToken{},
 	}
 }
 
