@@ -5,11 +5,12 @@ package status
 
 import (
 	"context"
+	"errors"
 	"fmt"
 
 	common "github.com/PRO-Robotech/sgroups-proto/pkg/api/common"
 	sgroupsv1 "github.com/PRO-Robotech/sgroups-proto/pkg/api/sgroups/v1"
-	"k8s.io/apimachinery/pkg/api/errors"
+	apierrors "k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apiserver/pkg/endpoints/request"
@@ -48,7 +49,7 @@ func (s *Storage) Destroy()              {}
 func (s *Storage) Get(ctx context.Context, name string, _ *metav1.GetOptions) (runtime.Object, error) {
 	ns, ok := request.NamespaceFrom(ctx)
 	if !ok {
-		return nil, errors.NewBadRequest("namespace is required")
+		return nil, apierrors.NewBadRequest("namespace is required")
 	}
 
 	req := &sgroupsv1.HostReq_List{
@@ -66,7 +67,7 @@ func (s *Storage) Get(ctx context.Context, name string, _ *metav1.GetOptions) (r
 		return nil, regerrors.FromGRPC(err, v1alpha1.Resource(v1alpha1.ResourceHosts), name)
 	}
 	if len(resp.GetHosts()) == 0 {
-		return nil, errors.NewNotFound(v1alpha1.Resource(v1alpha1.ResourceHosts), name)
+		return nil, apierrors.NewNotFound(v1alpha1.Resource(v1alpha1.ResourceHosts), name)
 	}
 
 	return convert.HostFromProtoExt(resp.GetHosts()[0]), nil
@@ -84,7 +85,7 @@ func (s *Storage) Update(
 ) (runtime.Object, bool, error) {
 	ns, ok := request.NamespaceFrom(ctx)
 	if !ok {
-		return nil, false, errors.NewBadRequest("namespace is required")
+		return nil, false, apierrors.NewBadRequest("namespace is required")
 	}
 
 	oldObj, err := s.Get(ctx, name, nil)
@@ -99,14 +100,23 @@ func (s *Storage) Update(
 
 	newHost, ok := newObj.(*v1alpha1.Host)
 	if !ok {
-		return nil, false, errors.NewBadRequest(fmt.Sprintf("expected *Host, got %T", newObj))
+		return nil, false, apierrors.NewBadRequest(fmt.Sprintf("expected *Host, got %T", newObj))
+	}
+
+	oldHost, ok := oldObj.(*v1alpha1.Host)
+	if !ok {
+		return nil, false, apierrors.NewBadRequest(fmt.Sprintf("expected *Host, got %T", oldObj))
+	}
+
+	if err := updateValidation(ctx, newObj, oldObj); err != nil {
+		return nil, false, err
 	}
 
 	updReq := &sgroupsv1.HostReq_UpdHealthStatus{
 		Hosts: []*sgroupsv1.HostReq_UpdHealthStatus_Host{
 			{
 				Metadata: &common.MetadataScope{
-					Uid:       string(oldObj.(*v1alpha1.Host).UID),
+					Uid:       string(oldHost.UID),
 					Name:      name,
 					Namespace: ns,
 				},
@@ -121,7 +131,7 @@ func (s *Storage) Update(
 		return nil, false, regerrors.FromGRPC(err, v1alpha1.Resource(v1alpha1.ResourceHosts), name)
 	}
 	if len(resp.GetHosts()) == 0 {
-		return nil, false, errors.NewInternalError(fmt.Errorf("empty upd-health-status response"))
+		return nil, false, apierrors.NewInternalError(errors.New("empty upd-health-status response"))
 	}
 
 	return convert.HostFromProto(resp.GetHosts()[0]), false, nil

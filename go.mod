@@ -114,4 +114,5 @@ require (
 	sigs.k8s.io/yaml v1.6.0 // indirect
 )
 
-replace github.com/PRO-Robotech/sgroups-proto => github.com/MaksimSkorobogatov/sgroups-proto v0.4.0
+// TODO: remove before merge
+replace github.com/PRO-Robotech/sgroups-proto v0.2.0 => github.com/MaksimSkorobogatov/sgroups-proto v0.4.1

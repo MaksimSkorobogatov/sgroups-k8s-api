@@ -208,7 +208,7 @@ type Host struct {
 	IPs               HostIPs       `json:"ips,omitempty"`
 	MetaInfo          HostMetaInfo  `json:"metaInfo,omitempty"`
 	Endpoints         HostEndpoints `json:"endpoints,omitempty"`
-	Healthy           bool          `json:"healthy,omitempty"`
+	Healthy           bool          `json:"healthy"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

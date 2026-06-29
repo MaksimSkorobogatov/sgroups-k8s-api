@@ -4,7 +4,7 @@ import (
 	"context"
 	"errors"
 
-	common "github.com/PRO-Robotech/sgroups-proto/pkg/api/common"
+	"github.com/PRO-Robotech/sgroups-proto/pkg/api/common"
 	sgroupsv1 "github.com/PRO-Robotech/sgroups-proto/pkg/api/sgroups/v1"
 	apierrors "k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -135,29 +135,4 @@ func (b *backend) Watch(ctx context.Context, sel base.Selection, resourceVersion
 			return convert.HostFromProtoExt(h)
 		},
 	), nil
-}
-
-func (b *backend) UpdHealthStatus(ctx context.Context, name, namespace string, healthy bool) (*v1alpha1.Host, error) {
-	req := &sgroupsv1.HostReq_UpdHealthStatus{
-		Hosts: []*sgroupsv1.HostReq_UpdHealthStatus_Host{
-			{
-				Metadata: &common.MetadataScope{
-					Name:      name,
-					Namespace: namespace,
-				},
-				Spec: &sgroupsv1.HostReq_UpdHealthStatus_Host_Spec{
-					Healthy: healthy,
-				},
-			},
-		},
-	}
-	resp, err := b.client.Hosts.UpdHealthStatus(ctx, req)
-	if err != nil {
-		return nil, regerrors.FromGRPC(err, b.Resource(), name)
-	}
-	if len(resp.GetHosts()) == 0 {
-		return nil, apierrors.NewInternalError(errors.New("empty upd-health-status response"))
-	}
-
-	return convert.HostFromProto(resp.GetHosts()[0]), nil
 }
