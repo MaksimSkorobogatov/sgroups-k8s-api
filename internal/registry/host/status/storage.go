@@ -121,7 +121,7 @@ func (s *Storage) Update(
 					Namespace: ns,
 				},
 				Spec: &sgroupsv1.HostReq_UpdHealthStatus_Host_Spec{
-					Healthy: newHost.Healthy,
+					Healthy: convert.HealthyBoolToProto(newHost.Healthy),
 				},
 			},
 		},

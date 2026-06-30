@@ -628,7 +628,13 @@ func (m *MockBackend) UpdHealthStatus(_ context.Context, req *sgroupsv1.HostReq_
 		if existing.Spec == nil {
 			existing.Spec = &sgroupsv1.Host_Spec{}
 		}
-		existing.Spec.Healthy = h.GetSpec().GetHealthy()
+		existing.Spec.Healthy = sgroupsv1.Healthy_HEALTHY_UNDEFINED
+		switch h.GetSpec().GetHealthy() {
+		case sgroupsv1.Healthy_HEALTHY_TRUE:
+			existing.Spec.Healthy = sgroupsv1.Healthy_HEALTHY_TRUE
+		case sgroupsv1.Healthy_HEALTHY_FALSE:
+			existing.Spec.Healthy = sgroupsv1.Healthy_HEALTHY_FALSE
+		}
 		_host := proto.Clone(existing)
 		host, ok := _host.(*sgroupsv1.Host)
 		if ok {

@@ -42,7 +42,7 @@ func HostFromProto(in *sgroupsv1.Host) *v1alpha1.Host {
 		IPs:       hostIPsFromProto(in.GetSpec().GetIps()),
 		MetaInfo:  hostMetaInfoFromProto(in.GetSpec().GetMetaInfo()),
 		Endpoints: hostEndpointsFromProto(in.GetSpec().GetEndpoints()),
-		Healthy:   in.GetSpec().GetHealthy(),
+		Healthy:   HealthyProtoToBool(in.GetSpec().GetHealthy()),
 	}
 	objectMetaFromProto(&out.ObjectMeta, in.GetMetadata())
 
@@ -68,7 +68,7 @@ func HostFromProtoExt(in *sgroupsv1.HostResp_HostExt) *v1alpha1.Host {
 		IPs:       hostIPsFromProto(in.GetSpec().GetIps()),
 		MetaInfo:  hostMetaInfoFromProto(in.GetSpec().GetMetaInfo()),
 		Endpoints: hostEndpointsFromProto(in.GetSpec().GetEndpoints()),
-		Healthy:   in.GetSpec().GetHealthy(),
+		Healthy:   HealthyProtoToBool(in.GetSpec().GetHealthy()),
 	}
 	objectMetaFromProto(&out.ObjectMeta, in.GetMetadata())
 
@@ -85,6 +85,23 @@ func hostIPsFromProto(in *common.IPs) v1alpha1.HostIPs {
 		IPv6: in.GetIpv6(),
 	}
 }
+// HealthyProtoToBool converts the proto Healthy enum to the boolean value used
+// by the v1alpha1.Host type. HEALTHY_TRUE maps to true; HEALTHY_FALSE and
+// HEALTHY_UNDEFINED map to false.
+func HealthyProtoToBool(h sgroupsv1.Healthy) bool {
+	return h == sgroupsv1.Healthy_HEALTHY_TRUE
+}
+
+// HealthyBoolToProto converts the boolean v1alpha1.Host.Healthy value to the
+// proto Healthy enum for the UpdHealthStatus request.
+func HealthyBoolToProto(b bool) sgroupsv1.Healthy {
+	if b {
+		return sgroupsv1.Healthy_HEALTHY_TRUE
+	}
+	return sgroupsv1.Healthy_HEALTHY_FALSE
+}
+
+
 
 func hostMetaInfoFromProto(in *sgroupsv1.Host_Spec_MetaInfo) v1alpha1.HostMetaInfo {
 	if in == nil {
